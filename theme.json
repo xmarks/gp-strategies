@@ -116,6 +116,50 @@
         { "slug": "yellow-50", "color": "#FCF8EE", "name": "Yellow 50" }
       ]
     },
+    "custom": {
+      "fontWeight": {
+        "regular": "400",
+        "medium": "500",
+        "semibold": "600"
+      },
+      "lineHeight": {
+        "tight": "110%"
+      }
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "slug": "poppins",
+          "fontFamily": "Poppins, sans-serif",
+          "name": "Poppins"
+        }
+      ],
+      "fontSizes": [
+        { "slug": "h1-lg", "size": "70px", "name": "H1 Large (70px)" },
+        { "slug": "h1-md", "size": "65px", "name": "H1 Medium (65px)" },
+        { "slug": "h1-sm", "size": "62px", "name": "H1 Small (62px)" },
+
+        { "slug": "h2-lg", "size": "53px", "name": "H2 Large (53px)" },
+        { "slug": "h2-md", "size": "48px", "name": "H2 Medium (48px)" },
+        { "slug": "h2-sm", "size": "44px", "name": "H2 Small (44px)" },
+
+        { "slug": "h3-lg", "size": "39px", "name": "H3 Large (39px)" },
+        { "slug": "h3-md", "size": "35px", "name": "H3 Medium (35px)" },
+        { "slug": "h3-sm", "size": "33px", "name": "H3 Small (33px)" },
+
+        { "slug": "h4-lg", "size": "30px", "name": "H4 Large (30px)" },
+        { "slug": "h4-md", "size": "27px", "name": "H4 Medium (27px)" },
+        { "slug": "h4-sm", "size": "24px", "name": "H4 Small (24px)" },
+
+        { "slug": "title-lg", "size": "22px", "name": "Title Large (22px)" },
+        { "slug": "title-md", "size": "20px", "name": "Title Medium (20px)" },
+        { "slug": "title-sm", "size": "19px", "name": "Title Small (19px)" },
+
+        { "slug": "button", "size": "14px", "name": "Button (14px)" },
+        { "slug": "text", "size": "12px", "name": "Text (12px)" },
+        { "slug": "micro", "size": "9px", "name": "Micro (9px)" }
+      ]
+    },
     "layout": {
       "contentSize": "1320px",
       "wideSize": "1440px"
