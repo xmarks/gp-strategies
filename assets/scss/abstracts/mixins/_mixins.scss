@@ -1,11 +1,129 @@
 // Center block
-@mixin center-block {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
+//@mixin center-block {
+//	display: block;
+//	margin-left: auto;
+//	margin-right: auto;
+//}
 
 // Column width with margin
-@mixin column-width($numberColumns: 3) {
-	width: map-get($columns, $numberColumns) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
+//@mixin column-width($numberColumns: 3) {
+//	width: map-get($columns, $numberColumns) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
+//}
+
+
+// ==========================================================================
+// Mixins - Parametric mixins for theme.json CSS custom properties
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Color Mixins (accepts color slug from theme.json)
+// --------------------------------------------------------------------------
+
+@mixin gp-color($slug) {
+  color: var(--wp--preset--color--#{$slug});
+}
+
+@mixin gp-bg($slug) {
+  background-color: var(--wp--preset--color--#{$slug});
+}
+
+@mixin gp-border($slug) {
+  border-color: var(--wp--preset--color--#{$slug});
+}
+
+@mixin gp-fill($slug) {
+  fill: var(--wp--preset--color--#{$slug});
+}
+
+@mixin gp-stroke($slug) {
+  stroke: var(--wp--preset--color--#{$slug});
+}
+
+// --------------------------------------------------------------------------
+// Shadow Mixins
+// --------------------------------------------------------------------------
+
+@mixin gp-shadow($slug) {
+  box-shadow: var(--wp--preset--shadow--#{$slug});
+}
+
+// --------------------------------------------------------------------------
+// Typography Mixins
+// --------------------------------------------------------------------------
+
+@mixin gp-font-size($slug) {
+  font-size: var(--wp--preset--font-size--#{$slug});
+}
+
+@mixin gp-font-family($slug) {
+  font-family: var(--wp--preset--font-family--#{$slug});
+}
+
+// --------------------------------------------------------------------------
+// Spacing Mixins
+// --------------------------------------------------------------------------
+
+@mixin gp-gap($slug) {
+  gap: var(--wp--preset--spacing--#{$slug});
+}
+
+@mixin gp-padding($slug) {
+  padding: var(--wp--preset--spacing--#{$slug});
+}
+
+@mixin gp-margin($slug) {
+  margin: var(--wp--preset--spacing--#{$slug});
+}
+
+// Directional spacing
+@mixin gp-pt($slug) {
+  padding-top: var(--wp--preset--spacing--#{$slug});
+}
+
+@mixin gp-pr($slug) {
+  padding-right: var(--wp--preset--spacing--#{$slug});
+}
+
+@mixin gp-pb($slug) {
+  padding-bottom: var(--wp--preset--spacing--#{$slug});
+}
+
+@mixin gp-pl($slug) {
+  padding-left: var(--wp--preset--spacing--#{$slug});
+}
+
+@mixin gp-px($slug) {
+  padding-left: var(--wp--preset--spacing--#{$slug});
+  padding-right: var(--wp--preset--spacing--#{$slug});
+}
+
+@mixin gp-py($slug) {
+  padding-top: var(--wp--preset--spacing--#{$slug});
+  padding-bottom: var(--wp--preset--spacing--#{$slug});
+}
+
+@mixin gp-mt($slug) {
+  margin-top: var(--wp--preset--spacing--#{$slug});
+}
+
+@mixin gp-mr($slug) {
+  margin-right: var(--wp--preset--spacing--#{$slug});
+}
+
+@mixin gp-mb($slug) {
+  margin-bottom: var(--wp--preset--spacing--#{$slug});
+}
+
+@mixin gp-ml($slug) {
+  margin-left: var(--wp--preset--spacing--#{$slug});
+}
+
+@mixin gp-mx($slug) {
+  margin-left: var(--wp--preset--spacing--#{$slug});
+  margin-right: var(--wp--preset--spacing--#{$slug});
+}
+
+@mixin gp-my($slug) {
+  margin-top: var(--wp--preset--spacing--#{$slug});
+  margin-bottom: var(--wp--preset--spacing--#{$slug});
 }

@@ -1,0 +1,160 @@
+// ==========================================================================
+// GP Preset Helper Classes
+// Auto-generated utility classes from theme.json variables
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Color Slugs (from theme.json)
+// --------------------------------------------------------------------------
+
+$gp-colors: (
+  // Brand colors
+  'gp-soft-mint',
+  'gp-deep-blue',
+  // Mint scale
+  'mint-950', 'mint-900', 'mint-800', 'mint-700', 'mint-600',
+  'mint-500', 'mint-400', 'mint-300', 'mint-200', 'mint-100', 'mint-50',
+  // Grey scale
+  'grey-950', 'grey-900', 'grey-800', 'grey-700', 'grey-600',
+  'grey-500', 'grey-400', 'grey-300', 'grey-200', 'grey-100', 'grey-50',
+  // Blue scale
+  'blue-950', 'blue-900', 'blue-800', 'blue-700', 'blue-600',
+  'blue-500', 'blue-400', 'blue-300', 'blue-200', 'blue-100', 'blue-50',
+  // Aqua scale
+  'aqua-950', 'aqua-900', 'aqua-800', 'aqua-700', 'aqua-600',
+  'aqua-500', 'aqua-400', 'aqua-300', 'aqua-200', 'aqua-100', 'aqua-50',
+  // Berry scale
+  'berry-950', 'berry-900', 'berry-800', 'berry-700', 'berry-600',
+  'berry-500', 'berry-400', 'berry-300', 'berry-200', 'berry-100', 'berry-50',
+  // Purple scale
+  'purple-950', 'purple-900', 'purple-800', 'purple-700', 'purple-600',
+  'purple-500', 'purple-400', 'purple-300', 'purple-200', 'purple-100', 'purple-50',
+  // Green scale
+  'green-950', 'green-900', 'green-800', 'green-700', 'green-600',
+  'green-500', 'green-400', 'green-300', 'green-200', 'green-100', 'green-50',
+  // Orange scale
+  'orange-950', 'orange-900', 'orange-800', 'orange-700', 'orange-600',
+  'orange-500', 'orange-400', 'orange-300', 'orange-200', 'orange-100', 'orange-50',
+  // Yellow scale
+  'yellow-950', 'yellow-900', 'yellow-800', 'yellow-700', 'yellow-600',
+  'yellow-500', 'yellow-400', 'yellow-300', 'yellow-200', 'yellow-100', 'yellow-50'
+);
+
+$gp-shadows: ('100', '200', '300', '400', '500', '600', '700', '800');
+
+$gp-font-sizes: (
+  'h1-lg', 'h1-md', 'h1-sm',
+  'h2-lg', 'h2-md', 'h2-sm',
+  'h3-lg', 'h3-md', 'h3-sm',
+  'h4-lg', 'h4-md', 'h4-sm',
+  'title-lg', 'title-md', 'title-sm',
+  'button', 'text', 'micro'
+);
+
+$gp-spacings: ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16');
+
+// --------------------------------------------------------------------------
+// Generated Classes
+// --------------------------------------------------------------------------
+
+.gp-preset {
+  // Color utilities: .gp-preset--color-{slug}, .gp-preset--bg-{slug}, etc.
+  @each $color in $gp-colors {
+    &--color-#{$color} {
+      @include gp-color($color);
+    }
+
+    &--bg-#{$color} {
+      @include gp-bg($color);
+    }
+
+    &--border-#{$color} {
+      @include gp-border($color);
+    }
+
+    &--fill-#{$color} {
+      @include gp-fill($color);
+    }
+
+    &--stroke-#{$color} {
+      @include gp-stroke($color);
+    }
+  }
+
+  // Shadow utilities: .gp-preset--shadow-{slug}
+  @each $shadow in $gp-shadows {
+    &--shadow-#{$shadow} {
+      @include gp-shadow($shadow);
+    }
+  }
+
+  // Font size utilities: .gp-preset--font-size-{slug}
+  @each $size in $gp-font-sizes {
+    &--font-size-#{$size} {
+      @include gp-font-size($size);
+    }
+  }
+
+  // Spacing utilities: .gp-preset--gap-{slug}, .gp-preset--p-{slug}, etc.
+  @each $space in $gp-spacings {
+    &--gap-#{$space} {
+      @include gp-gap($space);
+    }
+
+    &--p-#{$space} {
+      @include gp-padding($space);
+    }
+
+    &--pt-#{$space} {
+      @include gp-pt($space);
+    }
+
+    &--pr-#{$space} {
+      @include gp-pr($space);
+    }
+
+    &--pb-#{$space} {
+      @include gp-pb($space);
+    }
+
+    &--pl-#{$space} {
+      @include gp-pl($space);
+    }
+
+    &--px-#{$space} {
+      @include gp-px($space);
+    }
+
+    &--py-#{$space} {
+      @include gp-py($space);
+    }
+
+    &--m-#{$space} {
+      @include gp-margin($space);
+    }
+
+    &--mt-#{$space} {
+      @include gp-mt($space);
+    }
+
+    &--mr-#{$space} {
+      @include gp-mr($space);
+    }
+
+    &--mb-#{$space} {
+      @include gp-mb($space);
+    }
+
+    &--ml-#{$space} {
+      @include gp-ml($space);
+    }
+
+    &--mx-#{$space} {
+      @include gp-mx($space);
+    }
+
+    &--my-#{$space} {
+      @include gp-my($space);
+    }
+  }
+}
