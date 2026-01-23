@@ -167,6 +167,11 @@
           "slug": "800",
           "name": "Shadow 800",
           "shadow": "0 8px 28px -6px rgba(19, 25, 39, 0.12), 0 18px 88px -4px rgba(19, 25, 39, 0.14)"
+        },
+        {
+          "slug": "footer",
+          "name": "Shadow Footer",
+          "shadow": "0 -5px 23.4px 0 rgba(0, 0, 0, 0.25)"
         }
       ]
     },
