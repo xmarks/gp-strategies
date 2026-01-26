@@ -3,22 +3,26 @@ body {
   .elementor-widget-button {
 
 	&.gp-btn {
-	  --gp-btn-br        : 100px;
-	  --gp-btn-p         : 10px;
+	  --gp-btn-br         : 100px;
+	  --gp-btn-py         : 10px;
+	  --gp-btn-px         : 10px;
 
-	  --gp-btn-c         : var(--wp--preset--color--neutrals-50);
-	  --gp-btn-c--hover  : var(--wp--preset--color--neutrals-50);
-	  --gp-btn-c--focus  : var(--wp--preset--color--neutrals-50);
-	  --gp-btn-bg        : var(--wp--preset--color--mint-800);
-	  --gp-btn-bg--hover : var(--wp--preset--color--mint-600);
-	  --gp-btn-bg--focus : var(--wp--preset--color--mint-600);
-
+	  --gp-btn-c          : var(--wp--preset--color--neutrals-50);
+	  --gp-btn-c--hover   : var(--wp--preset--color--neutrals-50);
+	  --gp-btn-c--active  : var(--wp--preset--color--neutrals-50);
+	  --gp-btn-bg         : var(--wp--preset--color--mint-800);
+	  --gp-btn-bg--hover  : var(--wp--preset--color--mint-600);
+	  --gp-btn-bg--active : var(--wp--preset--color--mint-700);
 
 	  .elementor-button {
+		// Elementor Override
+		line-height      : 1.5 !important;
+		// -END - Elementor Override
+
 		position         : relative;
 
 		border-radius    : var(--gp-btn-br);
-		padding          : var(--gp-btn-p) var(--gp-btn-p) var(--gp-btn-p) calc(var(--gp-btn-p) + 9px); // +9px left for some reason
+		padding          : var(--gp-btn-py) var(--gp-btn-px) var(--gp-btn-py) calc(var(--gp-btn-px) + 9px); // +9px left for some reason
 
 		color            : var(--gp-btn-c);
 		background-color : var(--gp-btn-bg);
@@ -28,7 +32,7 @@ body {
 		}
 
 		&-text {
-		  line-height : 1.5;
+
 		}
 
 		&-icon {
@@ -43,36 +47,64 @@ body {
 		  }
 		}
 
-		&:hover {
+		&:hover,
+		&:focus {
 		  color            : var(--gp-btn-c--hover);
 		  background-color : var(--gp-btn-bg--hover);
 
 		  &:before {
-			content       : "";
-			position      : absolute;
-			top           : 0;
-			left          : 0;
-			width         : 100%;
-			height        : 100%;
+			content                : "";
+			position               : absolute;
+			inset                  : 0;
+			border-radius          : var(--gp-btn-br);
+			padding                : 2px;
 
-			border-radius : var(--gp-btn-br);
-			border-style: solid;
-			border-width: 2px;
-			border-color: red;
+			background             : linear-gradient(
+							to bottom,
+							rgba(223, 255, 252, 0),
+							rgba(180, 255, 249, 0.6)
+			);
+
+			-webkit-mask           : linear-gradient(#FFFFFF 0 0) content-box,
+			linear-gradient(#FFFFFF 0 0);
+			-webkit-mask-composite : xor;
+			mask-composite         : exclude;
+
+			pointer-events         : none;
+			transition             : opacity .3s;
 		  }
 		}
 
-		&:focus {
-		  color            : var(--gp-btn-c--focus);
-		  background-color : var(--gp-btn-bg--focus);
-		}
-
 		&:active {
+		  color            : var(--gp-btn-c--active);
+		  background-color : var(--gp-btn-bg--active);
 
+		  &:before {
+			opacity : 0;
+		  }
 		}
 	  }
 
+	  // Large
+	  &--lg {
+		--gp-btn-py : 15px;
+		--gp-btn-px : 15px;
 
+		.elementor-button {
+		  line-height : 1.1 !important;
+		}
+	  }
+
+	  // Small
+	  &--sm {
+		--gp-btn-py : 8px;
+		--gp-btn-px : 10px;
+
+		.elementor-button {
+		  font-size   : 11px !important;
+		  line-height : 1.4 !important;
+		}
+	  }
 	}
   }
 }
