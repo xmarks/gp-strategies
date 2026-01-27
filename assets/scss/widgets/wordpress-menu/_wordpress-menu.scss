@@ -1,0 +1,36 @@
+
+header {
+
+  .elementor-widget-nav-menu {
+
+	nav {
+	  > ul {
+		> li {
+
+		  > a {
+			padding : 0;
+
+			&:before {
+			  // Reset Elementor Styles
+			  background-color    : transparent !important;
+			  opacity             : 1 !important;
+			  // -END - Reset Elementor Styles
+
+			  content             : "";
+			  position            : relative;
+
+			  width               : 14px;
+			  height              : 14px;
+			  background-image    : url("../images/theme-icons/icon-megamenu-lvl-1.svg");
+			  background-repeat   : no-repeat;
+			  background-size     : contain;
+			  background-position : center;
+
+			  margin-right        : 19px;
+			}
+		  }
+		}
+	  }
+	}
+  }
+}
