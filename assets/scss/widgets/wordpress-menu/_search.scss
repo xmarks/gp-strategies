@@ -3,45 +3,47 @@ header {
 
   .elementor-widget-search {
 	--search-input-width : 250px;
+	--search-button-size : calc(37.5px + 4px); // adjust to match your button
 	--search-transition  : 0.3s ease;
 
 	.e-search {
 
+	  // The form IS the pill - border goes here
 	  .e-search-form {
-		display     : flex;
-		align-items : center;
+		display       : flex;
+		align-items   : center;
 
-		position    : relative;
+		width         : var(--search-button-size);
+		overflow      : hidden;
+
+		border-radius : 100px;
+		border        : 2px solid transparent;
+
+		transition    : width var(--search-transition),
+		border-color var(--search-transition);
 	  }
 
 	  .e-search-input-wrapper {
-		max-width  : 0;
-		overflow   : hidden;
-		transition : max-width var(--search-transition),
-		opacity var(--search-transition);
-		opacity    : 0;
+		flex      : 1;
+		min-width : 0;
+		overflow  : hidden;
 	  }
 
 	  .e-search-input {
-		width         : var(--search-input-width);
-		min-width     : var(--search-input-width);
+		width            : 100%;
+		min-height       : calc(17.5px + (10px * 2));
 
-		min-height    : calc(17.5px + (10px * 2)); // icon size + 2 x border-size
-		border-radius : 100px;
-		border-style  : solid;
-		border-width  : 2px;
-		border-color  : var(--wp--preset--color--grey-50);
+		border           : none;
+		background-color : transparent;
+		outline          : none;
 
-		padding-left  : 15px;
+		padding-left     : 15px;
+		padding-right    : 10px;
 	  }
 
 	  .e-search-submit {
 		flex-shrink : 0;
 		cursor      : pointer;
-
-		position    : absolute;
-		top         : 0;
-		right       : 0;
 	  }
 	}
 
@@ -50,9 +52,10 @@ header {
 	&.is-open {
 
 	  .e-search {
-		.e-search-input-wrapper {
-		  max-width : var(--search-input-width);
-		  opacity   : 1;
+
+		.e-search-form {
+		  width        : var(--search-input-width);
+		  border-color : var(--wp--preset--color--grey-50);
 		}
 	  }
 	}
