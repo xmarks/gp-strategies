@@ -2,6 +2,7 @@ body {
 
   .elementor-widget-button {
 
+	// Default Button - Primary
 	&.gp-btn {
 	  --gp-btn-br         : 100px;
 	  --gp-btn-py         : 10px;
@@ -103,6 +104,36 @@ body {
 		.elementor-button {
 		  font-size   : 11px !important;
 		  line-height : 1.4 !important;
+		}
+	  }
+
+	  // Secondary
+	  &--secondary {
+		--gp-btn-c          : var(--wp--preset--color--mint-800);
+		--gp-btn-c--hover   : var(--wp--preset--color--neutrals-50);
+		--gp-btn-c--active  : var(--wp--preset--color--mint-800);
+		--gp-btn-bg         : var(--wp--preset--color--grey-50);
+		--gp-btn-bg--hover  : var(--wp--preset--color--mint-600);
+		--gp-btn-bg--active : var(--wp--preset--color--blue-jl-50);
+
+		.elementor-button {
+
+		  &:before {
+			display : none !important;
+		  }
+
+		  &-text,
+		  &-icon {
+			transition : opacity .3s;
+		  }
+
+		  &:active {
+
+			.elementor-button-text,
+			.elementor-button-icon {
+			  opacity : 0.5;
+			}
+		  }
 		}
 	  }
 	}

@@ -115,7 +115,8 @@
         { "slug": "yellow-100", "color": "#F5E9C9", "name": "Yellow 100" },
         { "slug": "yellow-50", "color": "#FCF8EE", "name": "Yellow 50" },
 
-        { "slug": "neutrals-50", "color": "#F4F4F6", "name": "Neutrals 50" }
+        { "slug": "neutrals-50", "color": "#F4F4F6", "name": "Neutrals 50" },
+        { "slug": "blue-jl-50", "color": "#EDF9FD", "name": "Blue JL 50" }
       ]
     },
     "custom": {
