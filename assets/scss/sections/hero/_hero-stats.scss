@@ -42,9 +42,19 @@
 
 	  .elementor-counter-number-wrapper {
 		//font-variant-numeric : tabular-nums;
+		display         : flex;
+		justify-content : flex-end;
 
 		//flex-basis           : 54.5px;
 		//max-width            : 54.5px;
+
+		.elementor-counter-number-prefix {
+		  flex-grow : 0;
+		}
+
+		.elementor-counter-number-suffix {
+		  flex-grow : 0;
+		}
 
 		.elementor-counter-number {
 		  //font-variant-numeric : tabular-nums;
