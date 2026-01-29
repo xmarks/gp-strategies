@@ -17,7 +17,7 @@ body {
 
 	  .elementor-button {
 		// Elementor Override
-		line-height      : 1.5 !important;
+		// line-height      : 1.5 !important; // 1.5 by default
 		// -END - Elementor Override
 
 		position         : relative;
@@ -92,7 +92,9 @@ body {
 		--gp-btn-px : 15px;
 
 		.elementor-button {
+		  // Elementor Override
 		  line-height : 1.1 !important;
+		  // -END - Elementor Override
 		}
 	  }
 
@@ -102,8 +104,10 @@ body {
 		--gp-btn-px : 10px;
 
 		.elementor-button {
+		  // Elementor Override
 		  font-size   : 11px !important;
 		  line-height : 1.4 !important;
+		  // -END - Elementor Override
 		}
 	  }
 

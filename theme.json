@@ -207,7 +207,7 @@
         { "slug": "title-md", "size": "20px", "name": "Title Medium (20px)" },
         { "slug": "title-sm", "size": "19px", "name": "Title Small (19px)" },
 
-        { "slug": "button", "size": "14px", "name": "Button (14px)" },
+        { "slug": "button", "size": "15px", "name": "Button (15px)" },
         { "slug": "text", "size": "12px", "name": "Text (12px)" },
         { "slug": "micro", "size": "9px", "name": "Micro (9px)" }
       ]

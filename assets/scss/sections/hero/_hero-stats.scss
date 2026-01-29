@@ -2,24 +2,6 @@
 
 
   .elementor-widget-counter {
-	--gp-item-pt    : 17px;
-	--gp-item-pr    : 25px;
-	--gp-item-pb    : 17px;
-	--gp-item-pl    : 25px;
-	--gp-item-br    : 20px;
-
-
-	background      : rgba(255, 255, 255, 0.09);
-	border-style    : solid !important;
-	border-width    : 1px !important;
-	border-color    : rgba(255, 255, 255, 0.4);
-
-	//background: hsla(0,0%,100%,.3);
-	backdrop-filter : blur(12px);
-
-	padding         : var(--gp-item-pt) var(--gp-item-pr) var(--gp-item-pb) var(--gp-item-pl) !important;
-	border-radius   : var(--gp-item-br);
-
 	display         : flex;
 	justify-content : flex-start;
 
@@ -44,9 +26,6 @@
 		//font-variant-numeric : tabular-nums;
 		display         : flex;
 		justify-content : flex-end;
-
-		//flex-basis           : 54.5px;
-		//max-width            : 54.5px;
 
 		.elementor-counter-number-prefix {
 		  flex-grow : 0;
