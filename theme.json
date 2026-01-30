@@ -126,7 +126,9 @@
         "semibold": "600"
       },
       "lineHeight": {
-        "tight": "110%"
+        "tight": "110%",
+        "relaxed": "140%",
+        "normal": "150%"
       }
     },
     "shadow": {
@@ -207,8 +209,10 @@
         { "slug": "title-md", "size": "20px", "name": "Title Medium (20px)" },
         { "slug": "title-sm", "size": "19px", "name": "Title Small (19px)" },
 
+        { "slug": "caption", "size": "16px", "name": "Caption (16px)" },
         { "slug": "button", "size": "15px", "name": "Button (15px)" },
-        { "slug": "text", "size": "12px", "name": "Text (12px)" },
+        { "slug": "text", "size": "14px", "name": "Text (14px)" },
+        { "slug": "large-micro", "size": "12px", "name": "Large Micro (12px)" },
         { "slug": "micro", "size": "9px", "name": "Micro (9px)" }
       ]
     },

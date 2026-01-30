@@ -7,7 +7,7 @@
 // Color Slugs (from theme.json)
 // --------------------------------------------------------------------------
 
-$gp-colors     : (
+$gp-colors       : (
   // Brand colors
 		'gp-soft-mint',
 		'gp-deep-blue',
@@ -40,18 +40,22 @@ $gp-colors     : (
 		'yellow-500', 'yellow-400', 'yellow-300', 'yellow-200', 'yellow-100', 'yellow-50'
 );
 
-$gp-shadows    : ('100', '200', '300', '400', '500', '600', '700', '800', 'footer');
+$gp-shadows      : ('100', '200', '300', '400', '500', '600', '700', '800', 'footer');
 
-$gp-font-sizes : (
+$gp-font-sizes   : (
 		'h1-lg', 'h1-md', 'h1-sm',
 		'h2-lg', 'h2-md', 'h2-sm',
 		'h3-lg', 'h3-md', 'h3-sm',
 		'h4-lg', 'h4-md', 'h4-sm',
 		'title-lg', 'title-md', 'title-sm',
-		'button', 'text', 'micro'
+		'caption', 'button', 'text', 'large-micro', 'micro'
 );
 
-$gp-spacings   : ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16');
+$gp-spacings     : ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16');
+
+$gp-font-weights : ('regular', 'medium', 'semibold');
+
+$gp-line-heights : ('tight', 'relaxed', 'normal');
 
 // --------------------------------------------------------------------------
 // Generated Classes
@@ -92,6 +96,20 @@ $gp-spacings   : ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
   @each $size in $gp-font-sizes {
 	&--font-size-#{$size} {
 	  @include gp-font-size($size);
+	}
+  }
+
+  // Font weight utilities: .gp-preset--font-weight-{slug}
+  @each $weight in $gp-font-weights {
+	&--font-weight-#{$weight} {
+	  @include gp-font-weight($weight);
+	}
+  }
+
+  // Line height utilities: .gp-preset--line-height-{slug}
+  @each $lh in $gp-line-heights {
+	&--line-height-#{$lh} {
+	  @include gp-line-height($lh);
 	}
   }
 
@@ -177,3 +195,8 @@ $gp-spacings   : ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
   }
 }
 
+.icon-m-0 {
+  svg {
+	margin : 0 !important;
+  }
+}
