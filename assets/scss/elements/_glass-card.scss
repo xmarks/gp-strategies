@@ -1,17 +1,17 @@
-.glass-card {
-  background              : rgba(255, 255, 255, 0.09);
-  border-style            : solid !important;
-  border-width            : 1px !important;
-  border-color            : rgba(255, 255, 255, 0.4);
-
-
-  //background      : rgba(255, 255, 255, 0.35);
-  //border-color      : rgba(255, 255, 255, 0.3);
-
-  //background: hsla(0,0%,100%,.3);
-  backdrop-filter         : blur(12px);
-  -webkit-backdrop-filter : blur(12px);
-}
+//.glass-card {
+//  background              : rgba(255, 255, 255, 0.09);
+//  border-style            : solid !important;
+//  border-width            : 1px !important;
+//  border-color            : rgba(255, 255, 255, 0.4);
+//
+//
+//  //background      : rgba(255, 255, 255, 0.35);
+//  //border-color      : rgba(255, 255, 255, 0.3);
+//
+//  //background: hsla(0,0%,100%,.3);
+//  backdrop-filter         : blur(12px);
+//  -webkit-backdrop-filter : blur(12px);
+//}
 
 // Version 1
 //.special_glass {
@@ -162,7 +162,7 @@
 
 
 // Version 3
-.special_glass {
+.glass-card {
 
   .elementor-widget-html {
 	position                : absolute;

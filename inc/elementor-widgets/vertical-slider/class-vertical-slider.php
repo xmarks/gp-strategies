@@ -148,7 +148,7 @@ class GP_Vertical_Slider_Widget extends \Elementor\Widget_Base {
 			array(
 				'label'       => esc_html__( 'Title', 'gp-strategies' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Service Title', 'gp-strategies' ),
+				'default'     => esc_html__( 'Slide Title', 'gp-strategies' ),
 				'label_block' => true,
 				'dynamic'     => array(
 					'active' => true,
@@ -248,6 +248,20 @@ class GP_Vertical_Slider_Widget extends \Elementor\Widget_Base {
 				'selectors'  => array(
 					'{{WRAPPER}} .gp-vertical-slider' => 'height: {{SIZE}}{{UNIT}};',
 				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'slides_to_show',
+			array(
+				'label'   => esc_html__( 'Slides to Show', 'gp-strategies' ),
+				'type'    => \Elementor\Controls_Manager::NUMBER,
+				'min'     => 1,
+				'max'     => 10,
+				'step'    => 1,
+				'default' => 4,
+				'tablet_default' => 4,
+				'mobile_default' => 4,
 			)
 		);
 
@@ -768,6 +782,11 @@ class GP_Vertical_Slider_Widget extends \Elementor\Widget_Base {
 		$slide_gap_size = $settings['slide_gap']['size'] ?? 10;
 		$slide_gap_unit = $settings['slide_gap']['unit'] ?? 'px';
 
+		// Get slides to show (responsive).
+		$slides_to_show        = (int) ( $settings['slides_to_show'] ?? 4 );
+		$slides_to_show_tablet = (int) ( $settings['slides_to_show_tablet'] ?? 3 );
+		$slides_to_show_mobile = (int) ( $settings['slides_to_show_mobile'] ?? 2 );
+
 		// Build Splide options.
 		$splide_options = array(
 			'direction'  => 'ttb',
@@ -778,6 +797,16 @@ class GP_Vertical_Slider_Widget extends \Elementor\Widget_Base {
 			'gap'        => $slide_gap_size . $slide_gap_unit,
 			'arrows'     => $show_arrows,
 			'pagination' => $show_pagination,
+            'perMove'    => 1,
+			'perPage'    => $slides_to_show,
+			'breakpoints' => array(
+				1024 => array(
+					'perPage' => $slides_to_show_tablet,
+				),
+				767  => array(
+					'perPage' => $slides_to_show_mobile,
+				),
+			),
 		);
 
 		if ( 'yes' === ( $settings['autoplay'] ?? '' ) ) {
@@ -829,6 +858,10 @@ class GP_Vertical_Slider_Widget extends \Elementor\Widget_Base {
 		var slideGapSize = settings.slide_gap && settings.slide_gap.size ? settings.slide_gap.size : 10;
 		var slideGapUnit = settings.slide_gap && settings.slide_gap.unit ? settings.slide_gap.unit : 'px';
 
+		var slidesToShow = parseInt(settings.slides_to_show) || 4;
+		var slidesToShowTablet = parseInt(settings.slides_to_show_tablet) || 3;
+		var slidesToShowMobile = parseInt(settings.slides_to_show_mobile) || 2;
+
 		var splideOptions = {
 			direction: 'ttb',
 			height: sliderHeightSize + sliderHeightUnit,
@@ -837,7 +870,13 @@ class GP_Vertical_Slider_Widget extends \Elementor\Widget_Base {
 			speed: parseInt(settings.speed) || 400,
 			gap: slideGapSize + slideGapUnit,
 			arrows: showArrows,
-			pagination: showPagination
+			pagination: showPagination,
+			perPage: slidesToShow,
+			perMove: 1,
+			breakpoints: {
+				1024: { perPage: slidesToShowTablet },
+				767: { perPage: slidesToShowMobile }
+			}
 		};
 
 		if (settings.autoplay === 'yes') {
@@ -857,9 +896,16 @@ class GP_Vertical_Slider_Widget extends \Elementor\Widget_Base {
 		<div class="{{{ wrapperClasses.join(' ') }}}" id="gp-vs-{{{ widgetId }}}" data-splide-options='{{{ JSON.stringify(splideOptions) }}}'>
 			<div class="splide__track">
 				<ul class="splide__list">
-					<# _.each(settings.slides, function(slide, index) { #>
+					<# _.each(settings.slides, function(slide, index) {
+						var hasLink = slide.slide_link && slide.slide_link.url && slide.slide_link.url !== '#';
+						var linkUrl = hasLink ? slide.slide_link.url : '';
+						var linkTarget = slide.slide_link && slide.slide_link.is_external ? ' target="_blank"' : '';
+						var linkNofollow = slide.slide_link && slide.slide_link.nofollow ? ' rel="nofollow"' : '';
+						var innerTag = hasLink ? 'a' : 'div';
+						var innerAttr = hasLink ? ' href="' + linkUrl + '"' + linkTarget + linkNofollow : '';
+					#>
 						<li class="splide__slide gp-vs__slide">
-							<div class="gp-vs__inner">
+							<{{{ innerTag }}} class="gp-vs__inner"{{{ innerAttr }}}>
 								<# if (slide.slide_image && slide.slide_image.url) { #>
 									<div class="gp-vs__image">
 										<img src="{{{ slide.slide_image.url }}}" alt="{{{ slide.slide_title || '' }}}">
@@ -874,14 +920,8 @@ class GP_Vertical_Slider_Widget extends \Elementor\Widget_Base {
 									<# if (slide.slide_description) { #>
 										<p class="gp-vs__description">{{{ slide.slide_description }}}</p>
 									<# } #>
-
-									<# if (slide.slide_link && slide.slide_link.url && slide.slide_link.url !== '#') { #>
-										<a href="{{{ slide.slide_link.url }}}" class="gp-vs__link">
-											<?php esc_html_e( 'Learn More', 'gp-strategies' ); ?>
-										</a>
-									<# } #>
 								</div>
-							</div>
+							</{{{ innerTag }}}>
 						</li>
 					<# }); #>
 				</ul>

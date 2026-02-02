@@ -29,13 +29,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 				$image_url         = $slide['slide_image']['url'] ?? '';
 				$image_id          = $slide['slide_image']['id'] ?? 0;
 				$link_url          = $slide['slide_link']['url'] ?? '';
-				$link_is_external  = ! empty( $slide['slide_link']['is_external'] ) ? 'target="_blank"' : '';
-				$link_nofollow     = ! empty( $slide['slide_link']['nofollow'] ) ? 'rel="nofollow"' : '';
+				$link_is_external  = ! empty( $slide['slide_link']['is_external'] );
+				$link_nofollow     = ! empty( $slide['slide_link']['nofollow'] );
 				$slide_title       = $slide['slide_title'] ?? '';
 				$slide_description = $slide['slide_description'] ?? '';
+
+				$has_link   = $link_url && '#' !== $link_url;
+				$inner_tag  = $has_link ? 'a' : 'div';
+				$inner_attr = '';
+
+				if ( $has_link ) {
+					$inner_attr = ' href="' . esc_url( $link_url ) . '"';
+					if ( $link_is_external ) {
+						$inner_attr .= ' target="_blank"';
+					}
+					if ( $link_nofollow ) {
+						$inner_attr .= ' rel="nofollow"';
+					}
+				}
 				?>
 				<li <?php echo $this->get_render_attribute_string( $slide_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-					<div class="gp-vs__inner">
+					<<?php echo esc_attr( $inner_tag ); ?> class="gp-vs__inner glass-card"<?php echo $inner_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+
+                        <div class="elementor-widget-html">
+                            <div class="layer_01"></div>
+                            <div class="layer_02"></div>
+                            <div class="layer_03"></div>
+                            <div class="layer_04"></div>
+                            <div class="layer_05"></div>
+                        </div>
+
 						<?php if ( $image_url ) : ?>
 							<div class="gp-vs__image">
 								<?php
@@ -58,14 +81,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php if ( $slide_description ) : ?>
 								<p class="gp-vs__description"><?php echo esc_html( $slide_description ); ?></p>
 							<?php endif; ?>
-
-							<?php if ( $link_url && '#' !== $link_url ) : ?>
-								<a href="<?php echo esc_url( $link_url ); ?>" class="gp-vs__link" <?php echo esc_attr( $link_is_external ); ?> <?php echo esc_attr( $link_nofollow ); ?>>
-									<?php esc_html_e( 'Learn More', 'gp-strategies' ); ?>
-								</a>
-							<?php endif; ?>
 						</div>
-					</div>
+					</<?php echo esc_attr( $inner_tag ); ?>>
 				</li>
 			<?php endforeach; ?>
 		</ul>

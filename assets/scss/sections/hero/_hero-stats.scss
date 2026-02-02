@@ -1,6 +1,5 @@
 .hero-stats {
 
-
   .elementor-widget-counter {
 	display         : flex;
 	justify-content : flex-start;
@@ -40,7 +39,9 @@
 		}
 	  }
 	}
+  }
 
+  .glass-card {
 	&:nth-child(1) {
 	  .elementor-counter {
 		.elementor-counter-number-wrapper {
