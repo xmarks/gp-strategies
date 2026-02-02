@@ -1,5 +1,5 @@
 /**
- * Vertical Slider Services - Elementor Editor Integration
+ * GP Vertical Slider - Elementor Editor Integration
  *
  * @package Gp_Strategies
  */
@@ -9,9 +9,9 @@
 
 	$(window).on('elementor/frontend/init', function () {
 		elementorFrontend.hooks.addAction(
-			'frontend/element_ready/vertical-slider-services.default',
+			'frontend/element_ready/gp-vertical-slider.default',
 			function ($scope) {
-				var $slider = $scope.find('.vertical-slider-services.splide');
+				var $slider = $scope.find('.gp-vertical-slider.splide');
 
 				if ($slider.length === 0) {
 					return;
@@ -45,7 +45,7 @@
 						var customOptions = JSON.parse(optionsAttr);
 						options = Object.assign({}, options, customOptions);
 					} catch (e) {
-						console.warn('Vertical Slider Services Editor: Invalid options JSON', e);
+						console.warn('GP Vertical Slider Editor: Invalid options JSON', e);
 					}
 				}
 

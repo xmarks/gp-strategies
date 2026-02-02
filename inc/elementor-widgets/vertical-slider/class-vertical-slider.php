@@ -1,8 +1,8 @@
 <?php
 /**
- * Vertical Slider Services Elementor Widget
+ * GP Vertical Slider Elementor Widget
  *
- * Custom Elementor widget using SplideJS for vertical slider
+ * Custom Elementor widget using SplideJS for vertical slider with multiple layouts
  *
  * @package Gp_Strategies
  */
@@ -14,11 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class Vertical_Slider_Services_Widget
+ * Class GP_Vertical_Slider_Widget
  *
- * Elementor widget for vertical services slider using SplideJS
+ * Elementor widget for vertical slider using SplideJS
  */
-class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
+class GP_Vertical_Slider_Widget extends \Elementor\Widget_Base {
 
 	/**
 	 * Get widget name
@@ -26,7 +26,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 	 * @return string
 	 */
 	public function get_name(): string {
-		return 'vertical-slider-services';
+		return 'gp-vertical-slider';
 	}
 
 	/**
@@ -35,7 +35,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 	 * @return string
 	 */
 	public function get_title(): string {
-		return esc_html__( 'Vertical Slider Services', 'gp-strategies' );
+		return esc_html__( 'GP - Vertical Slider', 'gp-strategies' );
 	}
 
 	/**
@@ -44,7 +44,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 	 * @return string
 	 */
 	public function get_icon(): string {
-		return 'eicon-slides';
+		return 'eicon-slider-vertical';
 	}
 
 	/**
@@ -62,7 +62,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 	 * @return array
 	 */
 	public function get_keywords(): array {
-		return array( 'slider', 'vertical', 'services', 'splide', 'carousel' );
+		return array( 'slider', 'vertical', 'services', 'splide', 'carousel', 'gp' );
 	}
 
 	/**
@@ -71,7 +71,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 	 * @return array
 	 */
 	public function get_script_depends(): array {
-		return array( 'plugins.splidejs.splide', 'plugins.elementor.vertical-slider-services' );
+		return array( 'plugins.splidejs.splide', 'plugins.elementor.vertical-slider' );
 	}
 
 	/**
@@ -80,7 +80,18 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 	 * @return array
 	 */
 	public function get_style_depends(): array {
-		return array( 'plugins.splidejs.core', 'plugins.elementor.vertical-slider-services' );
+		return array( 'plugins.splidejs.core', 'plugins.elementor.vertical-slider' );
+	}
+
+	/**
+	 * Get available layouts
+	 *
+	 * @return array
+	 */
+	protected function get_layouts(): array {
+		return array(
+			'services' => esc_html__( 'Services', 'gp-strategies' ),
+		);
 	}
 
 	/**
@@ -89,6 +100,27 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 	 * @return void
 	 */
 	protected function register_controls(): void {
+		// Content Section - Layout.
+		$this->start_controls_section(
+			'section_layout',
+			array(
+				'label' => esc_html__( 'Layout', 'gp-strategies' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			)
+		);
+
+		$this->add_control(
+			'layout',
+			array(
+				'label'   => esc_html__( 'Layout', 'gp-strategies' ),
+				'type'    => \Elementor\Controls_Manager::SELECT,
+				'default' => 'services',
+				'options' => $this->get_layouts(),
+			)
+		);
+
+		$this->end_controls_section();
+
 		// Content Section - Slides.
 		$this->start_controls_section(
 			'section_slides',
@@ -161,16 +193,16 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 				'fields'      => $repeater->get_controls(),
 				'default'     => array(
 					array(
-						'slide_title'       => esc_html__( 'Service One', 'gp-strategies' ),
-						'slide_description' => esc_html__( 'Description for service one.', 'gp-strategies' ),
+						'slide_title'       => esc_html__( 'Slide One', 'gp-strategies' ),
+						'slide_description' => esc_html__( 'Description for slide one.', 'gp-strategies' ),
 					),
 					array(
-						'slide_title'       => esc_html__( 'Service Two', 'gp-strategies' ),
-						'slide_description' => esc_html__( 'Description for service two.', 'gp-strategies' ),
+						'slide_title'       => esc_html__( 'Slide Two', 'gp-strategies' ),
+						'slide_description' => esc_html__( 'Description for slide two.', 'gp-strategies' ),
 					),
 					array(
-						'slide_title'       => esc_html__( 'Service Three', 'gp-strategies' ),
-						'slide_description' => esc_html__( 'Description for service three.', 'gp-strategies' ),
+						'slide_title'       => esc_html__( 'Slide Three', 'gp-strategies' ),
+						'slide_description' => esc_html__( 'Description for slide three.', 'gp-strategies' ),
 					),
 				),
 				'title_field' => '{{{ slide_title }}}',
@@ -214,7 +246,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 					'size' => 500,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .vertical-slider-services' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .gp-vertical-slider' => 'height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -312,7 +344,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => array(
-					'{{WRAPPER}} .vss-slide' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .gp-vs__slide' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -332,7 +364,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 					'isLinked' => true,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .vss-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .gp-vs__slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -362,7 +394,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 			array(
 				'name'     => 'slide_border',
 				'label'    => esc_html__( 'Border', 'gp-strategies' ),
-				'selector' => '{{WRAPPER}} .vss-slide',
+				'selector' => '{{WRAPPER}} .gp-vs__slide',
 			)
 		);
 
@@ -373,7 +405,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .vss-slide' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .gp-vs__slide' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -411,7 +443,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 					'size' => 150,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .vss-slide__image' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .gp-vs__image' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -423,7 +455,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .vss-slide__image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .gp-vs__image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -435,7 +467,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .vss-slide__image' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .gp-vs__image' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -466,7 +498,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default'   => '#333333',
 				'selectors' => array(
-					'{{WRAPPER}} .vss-slide__title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .gp-vs__title' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -475,7 +507,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'title_typography',
-				'selector' => '{{WRAPPER}} .vss-slide__title',
+				'selector' => '{{WRAPPER}} .gp-vs__title',
 			)
 		);
 
@@ -486,7 +518,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .vss-slide__title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .gp-vs__title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -507,7 +539,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default'   => '#666666',
 				'selectors' => array(
-					'{{WRAPPER}} .vss-slide__description' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .gp-vs__description' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -516,7 +548,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'description_typography',
-				'selector' => '{{WRAPPER}} .vss-slide__description',
+				'selector' => '{{WRAPPER}} .gp-vs__description',
 			)
 		);
 
@@ -527,7 +559,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .vss-slide__description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .gp-vs__description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -550,7 +582,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default'   => '#0066cc',
 				'selectors' => array(
-					'{{WRAPPER}} .vss-slide__link' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .gp-vs__link' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -562,7 +594,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default'   => '#004499',
 				'selectors' => array(
-					'{{WRAPPER}} .vss-slide__link:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .gp-vs__link:hover' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -571,7 +603,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'link_typography',
-				'selector' => '{{WRAPPER}} .vss-slide__link',
+				'selector' => '{{WRAPPER}} .gp-vs__link',
 			)
 		);
 
@@ -701,6 +733,16 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 	}
 
 	/**
+	 * Get template path for layout
+	 *
+	 * @param string $layout Layout name.
+	 * @return string
+	 */
+	protected function get_template_path( string $layout ): string {
+		return get_template_directory() . '/inc/elementor-widgets/vertical-slider/templates/' . $layout . '.php';
+	}
+
+	/**
 	 * Render widget output on the frontend
 	 *
 	 * @return void
@@ -708,6 +750,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 	protected function render(): void {
 		$settings = $this->get_settings_for_display();
 		$slides   = $settings['slides'] ?? array();
+		$layout   = $settings['layout'] ?? 'services';
 
 		if ( empty( $slides ) ) {
 			return;
@@ -743,86 +786,33 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 		}
 
 		// Build wrapper classes.
-		$wrapper_classes = array( 'vertical-slider-services', 'splide' );
+		$wrapper_classes = array( 'gp-vertical-slider', 'gp-vertical-slider--' . $layout, 'splide' );
 		if ( ! $show_arrows ) {
-			$wrapper_classes[] = 'vss-hide-arrows';
+			$wrapper_classes[] = 'gp-vs--hide-arrows';
 		}
 		if ( ! $show_pagination ) {
-			$wrapper_classes[] = 'vss-hide-pagination';
+			$wrapper_classes[] = 'gp-vs--hide-pagination';
 		}
 
 		$this->add_render_attribute(
 			'wrapper',
 			array(
 				'class'               => implode( ' ', $wrapper_classes ),
-				'id'                  => 'vss-' . esc_attr( $widget_id ),
+				'id'                  => 'gp-vs-' . esc_attr( $widget_id ),
 				'data-splide-options' => wp_json_encode( $splide_options ),
 			)
 		);
-		?>
 
-		<div <?php echo $this->get_render_attribute_string( 'wrapper' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-			<div class="splide__track">
-				<ul class="splide__list">
-					<?php foreach ( $slides as $index => $slide ) : ?>
-						<?php
-						$slide_key = 'slide_' . $index;
-						$this->add_render_attribute( $slide_key, 'class', 'splide__slide vss-slide', true );
+		// Load layout template.
+		$template_path = $this->get_template_path( $layout );
 
-						$image_url = $slide['slide_image']['url'] ?? '';
-						$image_id  = $slide['slide_image']['id'] ?? 0;
-
-						$link_url         = $slide['slide_link']['url'] ?? '';
-						$link_is_external = ! empty( $slide['slide_link']['is_external'] ) ? 'target="_blank"' : '';
-						$link_nofollow    = ! empty( $slide['slide_link']['nofollow'] ) ? 'rel="nofollow"' : '';
-						$slide_title      = $slide['slide_title'] ?? '';
-						$slide_description = $slide['slide_description'] ?? '';
-						?>
-						<li <?php echo $this->get_render_attribute_string( $slide_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-							<div class="vss-slide__inner">
-								<?php if ( $image_url ) : ?>
-									<div class="vss-slide__image">
-										<?php
-										if ( $image_id ) {
-											echo wp_get_attachment_image( $image_id, 'medium' );
-										} else {
-											?>
-											<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $slide_title ); ?>">
-											<?php
-										}
-										?>
-									</div>
-								<?php endif; ?>
-
-								<div class="vss-slide__content">
-									<?php if ( $slide_title ) : ?>
-										<h3 class="vss-slide__title"><?php echo esc_html( $slide_title ); ?></h3>
-									<?php endif; ?>
-
-									<?php if ( $slide_description ) : ?>
-										<p class="vss-slide__description"><?php echo esc_html( $slide_description ); ?></p>
-									<?php endif; ?>
-
-									<?php if ( $link_url && '#' !== $link_url ) : ?>
-										<a href="<?php echo esc_url( $link_url ); ?>" class="vss-slide__link" <?php echo esc_attr( $link_is_external ); ?> <?php echo esc_attr( $link_nofollow ); ?>>
-											<?php esc_html_e( 'Learn More', 'gp-strategies' ); ?>
-										</a>
-									<?php endif; ?>
-								</div>
-							</div>
-						</li>
-					<?php endforeach; ?>
-				</ul>
-			</div>
-		</div>
-
-		<?php
+		if ( file_exists( $template_path ) ) {
+			include $template_path;
+		}
 	}
 
 	/**
 	 * Render widget output in the editor
-	 *
-	 * Written as a Backbone JavaScript template and used to generate the live preview.
 	 *
 	 * @return void
 	 */
@@ -830,57 +820,63 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 		?>
 		<#
 		var widgetId = view.getID();
+		var layout = settings.layout || 'services';
 		var showArrows = settings.show_arrows === 'yes';
 		var showPagination = settings.show_pagination === 'yes';
 
+		var sliderHeightSize = settings.slider_height && settings.slider_height.size ? settings.slider_height.size : 500;
+		var sliderHeightUnit = settings.slider_height && settings.slider_height.unit ? settings.slider_height.unit : 'px';
+		var slideGapSize = settings.slide_gap && settings.slide_gap.size ? settings.slide_gap.size : 10;
+		var slideGapUnit = settings.slide_gap && settings.slide_gap.unit ? settings.slide_gap.unit : 'px';
+
 		var splideOptions = {
 			direction: 'ttb',
-			height: settings.slider_height.size + settings.slider_height.unit,
+			height: sliderHeightSize + sliderHeightUnit,
 			wheel: true,
 			type: settings.loop === 'yes' ? 'loop' : 'slide',
-			speed: parseInt(settings.speed),
-			gap: settings.slide_gap.size + settings.slide_gap.unit,
+			speed: parseInt(settings.speed) || 400,
+			gap: slideGapSize + slideGapUnit,
 			arrows: showArrows,
 			pagination: showPagination
 		};
 
 		if (settings.autoplay === 'yes') {
 			splideOptions.autoplay = true;
-			splideOptions.interval = parseInt(settings.autoplay_interval);
+			splideOptions.interval = parseInt(settings.autoplay_interval) || 3000;
 		}
 
-		var wrapperClasses = ['vertical-slider-services', 'splide'];
+		var wrapperClasses = ['gp-vertical-slider', 'gp-vertical-slider--' + layout, 'splide'];
 		if (!showArrows) {
-			wrapperClasses.push('vss-hide-arrows');
+			wrapperClasses.push('gp-vs--hide-arrows');
 		}
 		if (!showPagination) {
-			wrapperClasses.push('vss-hide-pagination');
+			wrapperClasses.push('gp-vs--hide-pagination');
 		}
 		#>
 
-		<div class="{{{ wrapperClasses.join(' ') }}}" id="vss-{{{ widgetId }}}" data-splide-options='{{{ JSON.stringify(splideOptions) }}}'>
+		<div class="{{{ wrapperClasses.join(' ') }}}" id="gp-vs-{{{ widgetId }}}" data-splide-options='{{{ JSON.stringify(splideOptions) }}}'>
 			<div class="splide__track">
 				<ul class="splide__list">
 					<# _.each(settings.slides, function(slide, index) { #>
-						<li class="splide__slide vss-slide">
-							<div class="vss-slide__inner">
-								<# if (slide.slide_image.url) { #>
-									<div class="vss-slide__image">
-										<img src="{{{ slide.slide_image.url }}}" alt="{{{ slide.slide_title }}}">
+						<li class="splide__slide gp-vs__slide">
+							<div class="gp-vs__inner">
+								<# if (slide.slide_image && slide.slide_image.url) { #>
+									<div class="gp-vs__image">
+										<img src="{{{ slide.slide_image.url }}}" alt="{{{ slide.slide_title || '' }}}">
 									</div>
 								<# } #>
 
-								<div class="vss-slide__content">
+								<div class="gp-vs__content">
 									<# if (slide.slide_title) { #>
-										<h3 class="vss-slide__title">{{{ slide.slide_title }}}</h3>
+										<h3 class="gp-vs__title">{{{ slide.slide_title }}}</h3>
 									<# } #>
 
 									<# if (slide.slide_description) { #>
-										<p class="vss-slide__description">{{{ slide.slide_description }}}</p>
+										<p class="gp-vs__description">{{{ slide.slide_description }}}</p>
 									<# } #>
 
-									<# if (slide.slide_link.url && slide.slide_link.url !== '#') { #>
-										<a href="{{{ slide.slide_link.url }}}" class="vss-slide__link">
+									<# if (slide.slide_link && slide.slide_link.url && slide.slide_link.url !== '#') { #>
+										<a href="{{{ slide.slide_link.url }}}" class="gp-vs__link">
 											<?php esc_html_e( 'Learn More', 'gp-strategies' ); ?>
 										</a>
 									<# } #>

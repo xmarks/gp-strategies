@@ -1,5 +1,5 @@
 /**
- * Vertical Slider Services - Frontend Initialization
+ * GP Vertical Slider - Frontend Initialization
  *
  * @package Gp_Strategies
  */
@@ -8,10 +8,10 @@
 	'use strict';
 
 	/**
-	 * Initialize all vertical slider services widgets
+	 * Initialize all GP vertical slider widgets
 	 */
-	function initVerticalSliderServices() {
-		var sliders = document.querySelectorAll('.vertical-slider-services.splide:not(.is-initialized)');
+	function initGPVerticalSlider() {
+		var sliders = document.querySelectorAll('.gp-vertical-slider.splide:not(.is-initialized)');
 
 		sliders.forEach(function (slider) {
 			var optionsAttr = slider.getAttribute('data-splide-options');
@@ -34,7 +34,7 @@
 					var customOptions = JSON.parse(optionsAttr);
 					options = Object.assign({}, options, customOptions);
 				} catch (e) {
-					console.warn('Vertical Slider Services: Invalid options JSON', e);
+					console.warn('GP Vertical Slider: Invalid options JSON', e);
 				}
 			}
 
@@ -52,11 +52,11 @@
 
 	// Initialize on DOM ready
 	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initVerticalSliderServices);
+		document.addEventListener('DOMContentLoaded', initGPVerticalSlider);
 	} else {
-		initVerticalSliderServices();
+		initGPVerticalSlider();
 	}
 
 	// Expose for external use (e.g., Elementor editor)
-	window.initVerticalSliderServices = initVerticalSliderServices;
+	window.initGPVerticalSlider = initGPVerticalSlider;
 })();
