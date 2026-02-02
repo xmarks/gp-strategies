@@ -71,7 +71,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 	 * @return array
 	 */
 	public function get_script_depends(): array {
-		return array( 'splide-js', 'vertical-slider-services-js' );
+		return array( 'plugins.splidejs.splide', 'plugins.elementor.vertical-slider-services' );
 	}
 
 	/**
@@ -80,7 +80,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 	 * @return array
 	 */
 	public function get_style_depends(): array {
-		return array( 'splide-core-css', 'vertical-slider-services-css' );
+		return array( 'plugins.splidejs.core', 'plugins.elementor.vertical-slider-services' );
 	}
 
 	/**
@@ -216,6 +216,30 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 				'selectors'  => array(
 					'{{WRAPPER}} .vertical-slider-services' => 'height: {{SIZE}}{{UNIT}};',
 				),
+			)
+		);
+
+		$this->add_control(
+			'show_arrows',
+			array(
+				'label'        => esc_html__( 'Arrows', 'gp-strategies' ),
+				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'gp-strategies' ),
+				'label_off'    => esc_html__( 'No', 'gp-strategies' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+			)
+		);
+
+		$this->add_control(
+			'show_pagination',
+			array(
+				'label'        => esc_html__( 'Pagination', 'gp-strategies' ),
+				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'gp-strategies' ),
+				'label_off'    => esc_html__( 'No', 'gp-strategies' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
 			)
 		);
 
@@ -552,6 +576,128 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 		);
 
 		$this->end_controls_section();
+
+		// Style Section - Arrows.
+		$this->start_controls_section(
+			'section_style_arrows',
+			array(
+				'label'     => esc_html__( 'Arrows', 'gp-strategies' ),
+				'tab'       => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => array(
+					'show_arrows' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'arrows_color',
+			array(
+				'label'     => esc_html__( 'Color', 'gp-strategies' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => array(
+					'{{WRAPPER}} .splide__arrow svg' => 'fill: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'arrows_background_color',
+			array(
+				'label'     => esc_html__( 'Background Color', 'gp-strategies' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => 'rgba(0, 0, 0, 0.5)',
+				'selectors' => array(
+					'{{WRAPPER}} .splide__arrow' => 'background: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'arrows_size',
+			array(
+				'label'      => esc_html__( 'Size', 'gp-strategies' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min'  => 20,
+						'max'  => 60,
+						'step' => 2,
+					),
+				),
+				'default'    => array(
+					'unit' => 'px',
+					'size' => 40,
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .splide__arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->end_controls_section();
+
+		// Style Section - Pagination.
+		$this->start_controls_section(
+			'section_style_pagination',
+			array(
+				'label'     => esc_html__( 'Pagination', 'gp-strategies' ),
+				'tab'       => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => array(
+					'show_pagination' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'pagination_color',
+			array(
+				'label'     => esc_html__( 'Color', 'gp-strategies' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => 'rgba(0, 0, 0, 0.3)',
+				'selectors' => array(
+					'{{WRAPPER}} .splide__pagination__page' => 'background: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'pagination_active_color',
+			array(
+				'label'     => esc_html__( 'Active Color', 'gp-strategies' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => 'rgba(0, 0, 0, 0.8)',
+				'selectors' => array(
+					'{{WRAPPER}} .splide__pagination__page.is-active' => 'background: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'pagination_size',
+			array(
+				'label'      => esc_html__( 'Size', 'gp-strategies' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min'  => 6,
+						'max'  => 20,
+						'step' => 1,
+					),
+				),
+				'default'    => array(
+					'unit' => 'px',
+					'size' => 10,
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .splide__pagination__page' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->end_controls_section();
 	}
 
 	/**
@@ -561,33 +707,54 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 	 */
 	protected function render(): void {
 		$settings = $this->get_settings_for_display();
-		$slides   = $settings['slides'];
+		$slides   = $settings['slides'] ?? array();
 
 		if ( empty( $slides ) ) {
 			return;
 		}
 
-		$widget_id = $this->get_id();
+		$widget_id       = $this->get_id();
+		$show_arrows     = 'yes' === ( $settings['show_arrows'] ?? 'yes' );
+		$show_pagination = 'yes' === ( $settings['show_pagination'] ?? 'yes' );
+
+		// Get slider height with defaults.
+		$slider_height_size = $settings['slider_height']['size'] ?? 500;
+		$slider_height_unit = $settings['slider_height']['unit'] ?? 'px';
+
+		// Get slide gap with defaults.
+		$slide_gap_size = $settings['slide_gap']['size'] ?? 10;
+		$slide_gap_unit = $settings['slide_gap']['unit'] ?? 'px';
 
 		// Build Splide options.
 		$splide_options = array(
-			'direction' => 'ttb',
-			'height'    => $settings['slider_height']['size'] . $settings['slider_height']['unit'],
-			'wheel'     => true,
-			'type'      => ( 'yes' === $settings['loop'] ) ? 'loop' : 'slide',
-			'speed'     => (int) $settings['speed'],
-			'gap'       => $settings['slide_gap']['size'] . $settings['slide_gap']['unit'],
+			'direction'  => 'ttb',
+			'height'     => $slider_height_size . $slider_height_unit,
+			'wheel'      => true,
+			'type'       => ( 'yes' === ( $settings['loop'] ?? 'yes' ) ) ? 'loop' : 'slide',
+			'speed'      => (int) ( $settings['speed'] ?? 400 ),
+			'gap'        => $slide_gap_size . $slide_gap_unit,
+			'arrows'     => $show_arrows,
+			'pagination' => $show_pagination,
 		);
 
-		if ( 'yes' === $settings['autoplay'] ) {
+		if ( 'yes' === ( $settings['autoplay'] ?? '' ) ) {
 			$splide_options['autoplay'] = true;
-			$splide_options['interval'] = (int) $settings['autoplay_interval'];
+			$splide_options['interval'] = (int) ( $settings['autoplay_interval'] ?? 3000 );
+		}
+
+		// Build wrapper classes.
+		$wrapper_classes = array( 'vertical-slider-services', 'splide' );
+		if ( ! $show_arrows ) {
+			$wrapper_classes[] = 'vss-hide-arrows';
+		}
+		if ( ! $show_pagination ) {
+			$wrapper_classes[] = 'vss-hide-pagination';
 		}
 
 		$this->add_render_attribute(
 			'wrapper',
 			array(
-				'class'               => 'vertical-slider-services splide',
+				'class'               => implode( ' ', $wrapper_classes ),
 				'id'                  => 'vss-' . esc_attr( $widget_id ),
 				'data-splide-options' => wp_json_encode( $splide_options ),
 			)
@@ -600,14 +767,16 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 					<?php foreach ( $slides as $index => $slide ) : ?>
 						<?php
 						$slide_key = 'slide_' . $index;
-						$this->add_render_attribute( $slide_key, 'class', 'splide__slide vss-slide' );
+						$this->add_render_attribute( $slide_key, 'class', 'splide__slide vss-slide', true );
 
-						$image_url = ! empty( $slide['slide_image']['url'] ) ? $slide['slide_image']['url'] : '';
-						$image_id  = ! empty( $slide['slide_image']['id'] ) ? $slide['slide_image']['id'] : 0;
+						$image_url = $slide['slide_image']['url'] ?? '';
+						$image_id  = $slide['slide_image']['id'] ?? 0;
 
-						$link_url         = ! empty( $slide['slide_link']['url'] ) ? $slide['slide_link']['url'] : '';
+						$link_url         = $slide['slide_link']['url'] ?? '';
 						$link_is_external = ! empty( $slide['slide_link']['is_external'] ) ? 'target="_blank"' : '';
 						$link_nofollow    = ! empty( $slide['slide_link']['nofollow'] ) ? 'rel="nofollow"' : '';
+						$slide_title      = $slide['slide_title'] ?? '';
+						$slide_description = $slide['slide_description'] ?? '';
 						?>
 						<li <?php echo $this->get_render_attribute_string( $slide_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 							<div class="vss-slide__inner">
@@ -618,7 +787,7 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 											echo wp_get_attachment_image( $image_id, 'medium' );
 										} else {
 											?>
-											<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $slide['slide_title'] ); ?>">
+											<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $slide_title ); ?>">
 											<?php
 										}
 										?>
@@ -626,12 +795,12 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 								<?php endif; ?>
 
 								<div class="vss-slide__content">
-									<?php if ( ! empty( $slide['slide_title'] ) ) : ?>
-										<h3 class="vss-slide__title"><?php echo esc_html( $slide['slide_title'] ); ?></h3>
+									<?php if ( $slide_title ) : ?>
+										<h3 class="vss-slide__title"><?php echo esc_html( $slide_title ); ?></h3>
 									<?php endif; ?>
 
-									<?php if ( ! empty( $slide['slide_description'] ) ) : ?>
-										<p class="vss-slide__description"><?php echo esc_html( $slide['slide_description'] ); ?></p>
+									<?php if ( $slide_description ) : ?>
+										<p class="vss-slide__description"><?php echo esc_html( $slide_description ); ?></p>
 									<?php endif; ?>
 
 									<?php if ( $link_url && '#' !== $link_url ) : ?>
@@ -661,22 +830,35 @@ class Vertical_Slider_Services_Widget extends \Elementor\Widget_Base {
 		?>
 		<#
 		var widgetId = view.getID();
+		var showArrows = settings.show_arrows === 'yes';
+		var showPagination = settings.show_pagination === 'yes';
+
 		var splideOptions = {
 			direction: 'ttb',
 			height: settings.slider_height.size + settings.slider_height.unit,
 			wheel: true,
 			type: settings.loop === 'yes' ? 'loop' : 'slide',
 			speed: parseInt(settings.speed),
-			gap: settings.slide_gap.size + settings.slide_gap.unit
+			gap: settings.slide_gap.size + settings.slide_gap.unit,
+			arrows: showArrows,
+			pagination: showPagination
 		};
 
 		if (settings.autoplay === 'yes') {
 			splideOptions.autoplay = true;
 			splideOptions.interval = parseInt(settings.autoplay_interval);
 		}
+
+		var wrapperClasses = ['vertical-slider-services', 'splide'];
+		if (!showArrows) {
+			wrapperClasses.push('vss-hide-arrows');
+		}
+		if (!showPagination) {
+			wrapperClasses.push('vss-hide-pagination');
+		}
 		#>
 
-		<div class="vertical-slider-services splide" id="vss-{{{ widgetId }}}" data-splide-options='{{{ JSON.stringify(splideOptions) }}}'>
+		<div class="{{{ wrapperClasses.join(' ') }}}" id="vss-{{{ widgetId }}}" data-splide-options='{{{ JSON.stringify(splideOptions) }}}'>
 			<div class="splide__track">
 				<ul class="splide__list">
 					<# _.each(settings.slides, function(slide, index) { #>

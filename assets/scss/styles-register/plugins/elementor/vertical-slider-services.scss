@@ -1,0 +1,211 @@
+/**
+ * Vertical Slider Services - Elementor Widget Styles
+ *
+ * @package Gp_Strategies
+ */
+
+.vertical-slider-services {
+	position: relative;
+	width: 100%;
+
+	.splide__track {
+		overflow: hidden;
+		height: 100%;
+	}
+
+	.splide__list {
+		height: 100%;
+	}
+
+	// Arrows
+	.splide__arrows {
+		.splide__arrow {
+			position: absolute;
+			z-index: 10;
+			left: 50%;
+			transform: translateX(-50%);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			background: rgba(0, 0, 0, 0.5);
+			border: none;
+			border-radius: 50%;
+			cursor: pointer;
+			transition: background 0.3s ease, opacity 0.3s ease;
+			opacity: 0.7;
+
+			&:hover {
+				background: rgba(0, 0, 0, 0.8);
+				opacity: 1;
+			}
+
+			&:disabled {
+				opacity: 0.3;
+				cursor: not-allowed;
+			}
+
+			svg {
+				width: 20px;
+				height: 20px;
+				fill: #fff;
+			}
+
+			&--prev {
+				top: 10px;
+
+				svg {
+					transform: rotate(90deg);
+				}
+			}
+
+			&--next {
+				bottom: 10px;
+
+				svg {
+					transform: rotate(-90deg);
+				}
+			}
+		}
+	}
+
+	// Hide arrows when disabled via control
+	&.vss-hide-arrows .splide__arrows {
+		display: none;
+	}
+
+	// Pagination
+	.splide__pagination {
+		position: absolute;
+		right: 15px;
+		top: 50%;
+		transform: translateY(-50%);
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+
+		li {
+			line-height: 0;
+		}
+
+		&__page {
+			display: block;
+			width: 10px;
+			height: 10px;
+			padding: 0;
+			background: rgba(0, 0, 0, 0.3);
+			border: none;
+			border-radius: 50%;
+			cursor: pointer;
+			transition: background 0.3s ease, transform 0.3s ease;
+
+			&:hover {
+				background: rgba(0, 0, 0, 0.6);
+			}
+
+			&.is-active {
+				background: rgba(0, 0, 0, 0.8);
+				transform: scale(1.2);
+			}
+		}
+	}
+
+	// Hide pagination when disabled via control
+	&.vss-hide-pagination .splide__pagination {
+		display: none;
+	}
+}
+
+// Slide styles
+.vss-slide {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	box-sizing: border-box;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+
+	&__inner {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 20px;
+		width: 100%;
+		height: 100%;
+	}
+
+	&__image {
+		flex-shrink: 0;
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+			object-fit: cover;
+		}
+	}
+
+	&__content {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&__title {
+		margin: 0 0 10px;
+		font-size: 1.5em;
+		font-weight: 600;
+		line-height: 1.3;
+	}
+
+	&__description {
+		margin: 0 0 15px;
+		font-size: 1em;
+		line-height: 1.6;
+	}
+
+	&__link {
+		display: inline-block;
+		text-decoration: none;
+		font-weight: 500;
+		transition: color 0.3s ease;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+// Responsive
+@media (max-width: 767px) {
+	.vss-slide__inner {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.vss-slide__image {
+		width: 100% !important;
+		max-width: 200px;
+		margin: 0 auto 15px;
+	}
+
+	.vertical-slider-services {
+		.splide__pagination {
+			right: 10px;
+		}
+
+		.splide__arrows .splide__arrow {
+			width: 32px;
+			height: 32px;
+
+			svg {
+				width: 16px;
+				height: 16px;
+			}
+		}
+	}
+}
