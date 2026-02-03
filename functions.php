@@ -50,3 +50,6 @@ require_once ST_THEME_PATH . '/inc/cpt.php';
 
 // Load theme Widgets.
 require_once ST_THEME_PATH . '/inc/widgets.php';
+
+// Load Elementor custom widgets.
+require_once ST_THEME_PATH . '/inc/elementor-widgets.php';

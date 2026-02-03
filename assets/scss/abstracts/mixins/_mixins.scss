@@ -59,6 +59,14 @@
   font-family: var(--wp--preset--font-family--#{$slug});
 }
 
+@mixin gp-font-weight($slug) {
+  font-weight: var(--wp--custom--font-weight--#{$slug});
+}
+
+@mixin gp-line-height($slug) {
+  line-height: var(--wp--custom--line-height--#{$slug});
+}
+
 // --------------------------------------------------------------------------
 // Spacing Mixins
 // --------------------------------------------------------------------------

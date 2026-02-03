@@ -1,0 +1,60 @@
+.hero--home {
+  --gp-hero-pt  : 177px;
+  --gp-hero-pb  : 48px;
+
+  border-radius : 0 0 50px 50px;
+  background    : #D9D9D9;
+
+  position      : relative;
+  overflow      : hidden;
+
+
+  &:before,
+  &:after {
+	content  : "";
+	position : absolute;
+  }
+
+  &:before {
+	background : radial-gradient(85.04% 43.78% at 100% -4.71%, #1D857D 0%, rgba(9, 14, 36, 0.00) 100%),
+	radial-gradient(79.04% 63.03% at 13.12% 111.52%, #1D857D 0%, #090E24 100%);
+
+	top        : -14px;
+	left       : -12px;
+	width      : calc(100% + 12px + 11px);
+	height     : calc(100% + 75px);
+  }
+
+  &:after {
+	background : radial-gradient(201.94% 90.97% at 18.1% 115.05%, #13A59A 2.4%, #050E24 49.26%, #050E24 53.19%, rgba(5, 14, 36, 0.00) 100%), radial-gradient(224.91% 88.54% at 1.25% 100%, #13A59A 2.4%, #050E24 49.26%, rgba(5, 14, 36, 0.00) 100%);
+
+	top        : 91px;
+	left       : -30px;
+	width      : calc(100% + 30px + 11px);
+	height     : calc(100% - 91px + 141px);
+  }
+
+  .hero-content {
+	z-index: 2;
+  }
+
+  // Using Stats Widget
+  @import "hero-stats";
+
+  // Image Layer
+  .hero-image {
+	z-index: 1;
+
+	position : absolute;
+	bottom   : 0;
+	right    : 0;
+
+	.elementor-widget-image {
+	  position : absolute;
+	  bottom   : 0;
+	  right    : 0;
+	}
+  }
+
+
+}

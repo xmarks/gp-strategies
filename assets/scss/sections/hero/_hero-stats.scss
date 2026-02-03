@@ -1,0 +1,77 @@
+.hero-stats {
+
+  .elementor-widget-counter {
+	display         : flex;
+	justify-content : flex-start;
+
+	.elementor-counter {
+	  gap             : 10px;
+	  display         : flex;
+	  flex-direction  : row-reverse;
+	  align-items     : center;
+	  justify-content : flex-end;
+
+	  .elementor-counter-title,
+	  .elementor-counter-number-wrapper {
+		flex-grow   : 0;
+		flex-shrink : 0;
+	  }
+
+	  .elementor-counter-title {
+
+	  }
+
+	  .elementor-counter-number-wrapper {
+		//font-variant-numeric : tabular-nums;
+		display         : flex;
+		justify-content : flex-end;
+
+		.elementor-counter-number-prefix {
+		  flex-grow : 0;
+		}
+
+		.elementor-counter-number-suffix {
+		  flex-grow : 0;
+		}
+
+		.elementor-counter-number {
+		  //font-variant-numeric : tabular-nums;
+		}
+	  }
+	}
+  }
+
+  .glass-card {
+	&:nth-child(1) {
+	  .elementor-counter {
+		.elementor-counter-number-wrapper {
+		  flex-basis : 87.6px;
+		}
+	  }
+	}
+
+	&:nth-child(2) {
+	  .elementor-counter {
+		.elementor-counter-number-wrapper {
+		  flex-basis : 54.5px;
+		}
+	  }
+	}
+
+	&:nth-child(3) {
+	  .elementor-counter {
+		.elementor-counter-number-wrapper {
+		  flex-basis : 43.5px;
+		}
+	  }
+	}
+
+	&:nth-child(4) {
+	  .elementor-counter {
+		.elementor-counter-number-wrapper {
+		  flex-basis : 43.5px;
+		}
+	  }
+	}
+  }
+}

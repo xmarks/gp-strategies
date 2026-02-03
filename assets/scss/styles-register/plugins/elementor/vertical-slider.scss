@@ -1,0 +1,247 @@
+/**
+ * GP Vertical Slider - Elementor Widget Styles
+ *
+ * @package Gp_Strategies
+ */
+
+.gp-vertical-slider {
+  --slider-height : 660px;
+
+  position        : relative;
+  width           : 100%;
+
+  height          : var(--slider-height) !important;
+
+  .splide__track {
+	overflow : hidden;
+	height   : 100% !important;
+  }
+
+  .splide__list {
+	height : 100%;
+  }
+
+  // Arrows
+  .splide__arrows {
+	.splide__arrow {
+	  position        : absolute;
+	  z-index         : 10;
+	  left            : 50%;
+	  transform       : translateX(-50%);
+	  display         : flex;
+	  align-items     : center;
+	  justify-content : center;
+	  width           : 40px;
+	  height          : 40px;
+	  background      : rgba(0, 0, 0, 0.5);
+	  border          : none;
+	  border-radius   : 50%;
+	  cursor          : pointer;
+	  transition      : background 0.3s ease, opacity 0.3s ease;
+	  opacity         : 0.7;
+
+	  &:hover {
+		background : rgba(0, 0, 0, 0.8);
+		opacity    : 1;
+	  }
+
+	  &:disabled {
+		opacity : 0.3;
+		cursor  : not-allowed;
+	  }
+
+	  svg {
+		width  : 20px;
+		height : 20px;
+		fill   : #FFFFFF;
+	  }
+
+	  &--prev {
+		top : 10px;
+
+		svg {
+		  transform : rotate(90deg);
+		}
+	  }
+
+	  &--next {
+		bottom : 10px;
+
+		svg {
+		  transform : rotate(-90deg);
+		}
+	  }
+	}
+  }
+
+  // Hide arrows when disabled via control
+  &.gp-vs--hide-arrows .splide__arrows {
+	display : none;
+  }
+
+  // Pagination
+  .splide__pagination {
+	position       : absolute;
+	right          : 15px;
+	top            : 50%;
+	transform      : translateY(-50%);
+	display        : flex;
+	flex-direction : column;
+	gap            : 8px;
+	padding        : 0;
+	margin         : 0;
+	list-style     : none;
+
+	li {
+	  line-height : 0;
+	}
+
+	&__page {
+	  display       : block;
+	  width         : 10px;
+	  height        : 10px;
+	  padding       : 0;
+	  background    : rgba(0, 0, 0, 0.3);
+	  border        : none;
+	  border-radius : 50%;
+	  cursor        : pointer;
+	  transition    : background 0.3s ease, transform 0.3s ease;
+
+	  &:hover {
+		background : rgba(0, 0, 0, 0.6);
+	  }
+
+	  &.is-active {
+		background : rgba(0, 0, 0, 0.8);
+		transform  : scale(1.2);
+	  }
+	}
+  }
+
+  // Hide pagination when disabled via control
+  &.gp-vs--hide-pagination .splide__pagination {
+	display : none;
+  }
+
+
+  // Layout: Services
+  &--services {
+	// Services-specific styles can go here
+
+	// Slide styles
+	.gp-vs__slide {
+	  height          : auto !important;
+	  background      : transparent !important;
+	  padding         : 0 !important;
+
+	  display         : flex;
+	  align-items     : center;
+	  justify-content : flex-start;
+	  //box-sizing      : border-box;
+	  //transition      : transform 0.3s ease, opacity 0.3s ease;
+
+	  margin-bottom   : 25px !important;
+	}
+
+	.gp-vs__inner {
+	  padding        : 10px;
+
+	  display        : flex;
+	  flex-direction : row;
+	  align-items    : center;
+	  gap            : 22px;
+	  width          : 100%;
+	  height         : 100%;
+	}
+
+	.gp-vs__image {
+	  z-index     : 1;
+
+	  flex-shrink : 0;
+	  width       : 104px !important;
+	  padding     : 19px;
+
+	  img {
+		display    : block;
+		width      : 100%;
+		height     : auto;
+		object-fit : cover;
+	  }
+	}
+
+	.gp-vs__content {
+	  z-index         : 1;
+
+	  flex            : 1;
+
+	  gap             : 10px;
+	  display         : flex;
+	  flex-direction  : column;
+	  justify-content : center;
+	}
+
+	.gp-vs__title {
+	  margin      : 0;
+
+	  font-size   : var(--wp--preset--font-size--title-lg);
+	  font-weight : var(--wp--custom--font-weight--semibold);
+	  line-height : var(--wp--custom--line-height--tight);
+
+	  color       : #FFFFFF!important;
+	}
+
+	.gp-vs__description {
+	  margin      : 0;
+
+	  font-size   : var(--wp--preset--font-size--large-micro);
+	  font-weight : var(--wp--custom--font-weight--regular);
+	  line-height : var(--wp--custom--line-height--relaxed);
+
+	  color       : #FFFFFF!important;
+	}
+
+	.gp-vs__link {
+	  display         : inline-block;
+	  text-decoration : none;
+	  font-weight     : 500;
+	  transition      : color 0.3s ease;
+
+	  display         : none;
+
+	  &:hover {
+		text-decoration : underline;
+	  }
+	}
+  }
+}
+
+
+// Responsive
+//@media (max-width : 767px) {
+//  .gp-vs__inner {
+//	flex-direction : column;
+//	text-align     : center;
+//  }
+//
+//  .gp-vs__image {
+//	width     : 100% !important;
+//	max-width : 200px;
+//	margin    : 0 auto 15px;
+//  }
+//
+//  .gp-vertical-slider {
+//	.splide__pagination {
+//	  right : 10px;
+//	}
+//
+//	.splide__arrows .splide__arrow {
+//	  width  : 32px;
+//	  height : 32px;
+//
+//	  svg {
+//		width  : 16px;
+//		height : 16px;
+//	  }
+//	}
+//  }
+//}

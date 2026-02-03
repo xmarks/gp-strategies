@@ -1,0 +1,16 @@
+.entry-content {
+
+  // Global Hero Styles
+  .hero {
+	--gp-hero-pt   : 0px;
+	--gp-hero-pb   : 0px;
+
+	padding-top    : calc(var(--gp-header-h) + var(--gp-hero-pt) + 27px);
+	padding-bottom : var(--gp-hero-pb);
+  }
+
+  // Home Hero - styles
+  @import "hero-home";
+}
+
+
