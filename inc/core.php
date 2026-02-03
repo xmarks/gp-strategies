@@ -102,3 +102,27 @@ if ( ! function_exists( 'gp_strategies_content_width' ) ) {
 	}
 }
 add_action( 'after_setup_theme', 'gp_strategies_content_width', 0 );
+
+
+/**
+ * Add legacy block category for imported blocks from gpstrategies-2023 theme.
+ *
+ * This supplements the parent theme's st_add_theme_block_categories() function,
+ * keeping the existing 'gp-strategies' category while adding a new 'gpstrategies' legacy category.
+ *
+ * @param array $categories Current list of categories.
+ *
+ * @return array
+ * @since 1.0.0
+ */
+function gp_add_legacy_block_category( array $categories ): array {
+	$legacy_category = array(
+		'slug'  => 'gpstrategies',
+		'title' => __( '[Legacy] - GP Strategies Sections', 'gp-strategies' ),
+		'icon'  => 'admin-appearance',
+	);
+	array_unshift( $categories, $legacy_category );
+
+	return $categories;
+}
+add_filter( 'block_categories_all', 'gp_add_legacy_block_category', 11, 1 );
