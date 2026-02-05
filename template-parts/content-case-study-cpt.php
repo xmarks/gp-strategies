@@ -4,6 +4,9 @@ $postID = get_the_ID();
 // [Legacy] - Enqueue Styles / Scripts
 if ( gp_is_legacy_enabled() ) {
 	wp_enqueue_style( 'legacy.main' );
+	wp_enqueue_style( 'legacy.aos' );
+	wp_enqueue_script( 'legacy.aos' );
+	wp_enqueue_script( 'legacy.jquery-main' );
 }
 
 ?>

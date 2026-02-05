@@ -18,7 +18,7 @@ if ( file_exists( get_template_directory() . '/vendor/autoload.php' ) ) {
 
 // Define theme version.
 if ( ! defined( 'GP_STRATEGIES_VERSION' ) ) {
-	define( 'GP_STRATEGIES_VERSION', '1.0.5' );
+	define( 'GP_STRATEGIES_VERSION', '1.0.6' );
 }
 
 // Define theme path constant.
