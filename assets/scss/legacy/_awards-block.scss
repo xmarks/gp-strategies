@@ -1,0 +1,54 @@
+.awards-block {
+	&__title {
+		margin: 0 0 60px;
+	}
+}
+
+.awards-grid {
+	display:-ms-grid;
+	display:grid;
+	grid-gap: 60px 32px;
+	grid-template-columns: repeat(auto-fill, [col-start] minmax(260px, 1fr) [col-end]);
+	padding:0;
+	margin:0;
+	list-style:none;
+	&__item {
+		text-align: center;
+		&:before{
+			content: none;
+		}
+	}
+	&__image {
+		margin: 0 0 16px;
+		height: 186px;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			display: block;
+		}
+	}
+	&__name {
+		font-size: 16px;
+		line-height: 1.5;
+		margin: 0 0 16px;
+	}
+	&__content {
+		font-size: 14px;
+		line-height: 1.5;
+		color: #5A5858;
+		font-weight: 300;
+		ul {
+			color: inherit;
+			padding:0;
+			margin:0;
+			list-style:none;
+			li {
+				margin: 4px 0;
+			}
+		}
+		p {
+			margin: 4px 0;
+		}
+	}
+}

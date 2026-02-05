@@ -1,0 +1,31 @@
+.hero-error-404{
+	background-color: $c-navy;
+	color: #fff;
+	&:before{
+		content: '';
+	    position: absolute;
+	    top: 0;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    background-repeat: no-repeat;
+	    background-position: 100% 50%;
+	    z-index: 2;
+	    background-image: url('../images/LOGO-PATTERN.svg');
+	}
+	.hero-page__content{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap:32px;
+		.bottom-dots{
+			margin-top: 0px;
+		}
+		a{
+			opacity: 1;
+		}
+	}
+	+ .blog-list-section{
+		padding-top: 120px;
+	}
+}

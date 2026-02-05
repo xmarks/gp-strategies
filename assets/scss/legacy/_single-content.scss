@@ -1,0 +1,257 @@
+.content-section {
+    padding: 120px 0;
+    @include tablet {
+        padding: 80px 0;
+    }
+    @include mobile {
+        padding: 40px 0;
+    }
+    & + .find-more-section {
+        padding-top: 0;
+    }
+    &__wrap {
+        display: flex;
+        gap:80px;
+        @include desktop {
+            gap: 40px;
+        }
+        @include tablet {
+
+        }
+        @include mobile {
+            display:-ms-grid;
+            display:grid;
+            -ms-grid-columns:1fr;
+            grid-template-columns:1fr;
+            grid-gap: 30px;
+        }
+    }
+    &__aside {
+        flex: 0 0 280px;
+        align-self: flex-start;
+        position: sticky;
+		top: 140px;
+        max-width: 280px;
+        @include tablet {
+            flex: 0 0 200px;
+            max-width: 200px;
+            top: 90px;
+            position: relative;
+            top: auto;
+        }
+        @include mobile{
+            max-width: 100%;
+        }
+        .single-post & {
+            position: relative;
+            top: auto;
+        }
+        &__logo {
+            margin: 0;
+            border: 1px solid rgba(20, 38, 58, 0.2);
+            border-radius: 24px;
+            overflow: hidden;
+            height: 184px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:not(:last-child) {
+                margin-bottom: 32px;
+            }
+            @include tablet {
+                height: 140px;
+            }
+            &.style-cover{
+                height: 0;
+                position: relative;
+                padding-bottom: 65%;
+                img{
+                   max-width: 100%;
+                   max-height: 100%;
+                   object-fit: cover;
+                   position: absolute;
+                   top: 0;
+                   left: 0;
+                   width: 100%;
+                   height: 100%;
+                }
+            }
+            &.remove-border-rad{
+                border-radius: 0px;
+            }
+            img {
+                max-width: 80%;
+                max-height: 80%;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: block;
+
+            }
+        }
+    }
+    &__featured-img {
+        position: relative;
+        padding-bottom: 76%;
+        margin-bottom: 32px;
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+        }
+    }
+    &__content {
+        flex: 1 1 auto;
+        min-width: 0;
+        position: sticky;
+        top: 100px;
+        > :first-child{
+            margin-top: 0px;
+        }
+    }
+    .featured-image{
+        width: 100%;
+        height: auto;
+        border-radius: 24px;
+        overflow: hidden;
+        display: block;
+        margin-bottom: 32px;
+    }
+}
+.single-post{
+    .table-of-contents__list>li a{
+        color: $c-navy;
+    }
+    .table-of-contents > ul ul li{
+        &:last-of-type:after{
+            content: none;
+        }
+    }
+    .list_level_2{
+        padding-left: 15px;
+        > li a{
+            font-size: 14px;
+        }
+    }
+    .list_level_3{
+        padding-left: 20px;
+        > li {
+
+            a{
+                    font-size: 12px;
+                }
+            }
+    }
+}
+.content-terms {
+    margin: 0;
+    & + .content-terms {
+        margin-top: 32px;
+    }
+    &__title {
+        color: $c-navy;
+        margin: 0 0 16px;
+    }
+    &__list {
+        margin: 0 0;
+        padding:0;
+        list-style:none;
+        li {
+            padding: 12px 0 0;
+        }
+        a {
+            color: $c-navy;
+            text-decoration: none;
+            &:hover, &.active {
+                color: $c-berry;
+            }
+        }
+        &--more {
+            display: none;
+        }
+        &--archives {
+            li {
+                &:nth-child(-n+10) {
+                    display: none;
+                }
+            }
+        }
+    }
+    &__more {
+        margin: 16px 0 0;
+    }
+    &__expand-link {
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        padding-right: 20px;
+        text-decoration: none;
+        color: $c-berry;
+        &:hover {
+            color: $c-navy;
+        }
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20px;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-color: currentColor;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg width='12' height='12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9 2 3h8L6 9Z' fill='%23000'/%3E%3C/svg%3E") no-repeat 50% 50%;
+            mask: url("data:image/svg+xml,%3Csvg width='12' height='12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9 2 3h8L6 9Z' fill='%23000'/%3E%3C/svg%3E") no-repeat 50% 50%;
+            .content-terms.active &{
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+.single-training-course{
+    .entry-content{
+        margin: 40px 0;
+    }
+}
+
+.acab {
+    padding: 100px 0;
+    &__wrap {
+        display:-ms-grid;
+        display:grid;
+        -ms-grid-columns:275px 1fr;
+        grid-template-columns:275px 1fr;
+        grid-gap: 60px;
+    }
+    &__image {
+        position: relative;
+        padding-bottom: 150%;
+        &:after {
+            content: " ";
+            background: $c-berry;
+            width: 100%;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            height: 5px;
+        }
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__name {
+        .mark {
+            color: $c-navy;
+        }
+    }
+}

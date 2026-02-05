@@ -1,0 +1,114 @@
+.section-content-flex {
+    position: relative;
+    overflow: hidden;
+    &__title {
+        margin: 0 0 30px;
+        color: $c-navy;
+    }
+    &__wrap {
+        position: relative;
+        display: flex;
+        // grid-template-columns: repeat(2, 1fr);
+        grid-gap: 0;
+        // min-height: 280px;
+        align-items: center;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -50vw;
+            width: 100vw;
+            background-color: $c-berry;
+        }
+        @include tablet {
+            flex-direction: column;
+            margin-left: -20px;
+            margin-right: -20px;
+        }
+    }
+    &__image {
+        position: relative;
+        order: var(--order);
+        width: var(--image-width);
+        align-self: stretch;
+        @include tablet {
+            order: 0;
+            padding-bottom: 50%;
+            width: 100%!important;
+        }
+        img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            max-width: inherit;
+            display: block;
+            object-fit: cover;
+            @include tablet {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+    &__info {
+        background-color: $c-berry;
+        color: #fff;
+        position: relative;
+        padding: 60px;
+        width: var(--text-width);
+        @include tablet {
+            padding: 40px;
+            width: 100%!important;
+        }
+        @include mobile {
+            padding: 20px 40px;
+        }
+        h2,
+        h3, h4 {
+            margin-top: 0;
+            color: inherit;
+        }
+        ul {
+            color: inherit;
+        }
+        p {
+            color: inherit;
+        }
+    }
+    &__content-title {
+        color: inherit;
+    }
+    &__text {
+        font-weight: 300;
+        font-size: 14px;
+        color: inherit;
+    }
+    &__buttons {
+        margin-top: 32px;
+        display: flex;
+        flex-wrap: wrap;
+        gap:16px;
+    }
+    &--right-img {
+        @include mf-small-desktop {
+            .innovation-approach__info {
+                padding-left: 0;
+                padding-right: 60px;
+            }
+            .innovation-approach__image img {
+                right: auto;
+                left: 0;
+            }
+        }
+    }
+    &.full-bg-image{
+        .section-content-flex__image{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}

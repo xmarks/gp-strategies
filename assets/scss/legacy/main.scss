@@ -1,0 +1,61 @@
+@import "_fonts";
+@import "_variable";
+
+html body.is-legacy main {
+  @import "_components";
+
+  // Remove Header => uses Elementor Header
+  //@import "_header";
+
+  @import "_other";
+
+  // Remove Footer => uses Elementor Footer
+  @import "_footer";
+
+  @import "_single-content";
+}
+
+@import "_reset";
+
+html body.is-legacy main {
+
+  @import "_table-of-contents";
+  @import "_hero-page";
+  @import "_gp-text-format";
+  @import "_awards-block";
+  @import "_partners-block";
+  @import "_location-block";
+  @import "_subpages-block";
+  @import "_highlight-cta";
+  @import "_card-styles";
+  @import "_gp-breadcrumbs";
+  @import "_cards-grid";
+  @import "_forms";
+  @import "_search-bar-form";
+  @import "_author-card";
+  @import "_icon-list";
+  @import "_events-list";
+  @import "_video";
+  @import "_card-pordcast";
+
+  @import "_wp-data-table";
+  @import "_pagination";
+
+  // Will probably handle error page differently
+  //@import "_error-page";
+
+  @import "_single-podcast";
+
+  // Will probably handle search page differently
+  //@import "_search-page";
+
+  // Will probably handle archive page differently
+  //@import "_archive-posts";
+
+  @import "_cookie-notify";
+  @import "_social-links";
+  @import "_testimonial-carousel";
+  @import "_hero-home-new";
+  @import "_cta-section-banner";
+  @import "_section-content-flex";
+}

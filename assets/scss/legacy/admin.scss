@@ -1,0 +1,83 @@
+@import "_variable";
+
+@import "_components";
+@import "_other";
+
+
+// blocks
+@import "_table-of-contents";
+@import "_hero-page";
+@import "_gp-text-format";
+@import "_highlight-cta";
+@import "_card-styles";
+@import "_gp-breadcrumbs";
+@import "_section-content-flex";
+
+@import "_wp-data-table";
+
+.editor-styles-wrapper {
+	font-family: hero-new,Helvetica,Arial,sans-serif;
+	color: rgba(90, 88, 88, 1);
+	font-size: 14px;
+	line-height: 21px;
+	font-weight: 300;
+	h1 {
+		font-weight: 500;
+		font-size: 64px;
+		line-height: 1.2;
+	}
+	h2 {
+		font-weight: 500;
+		font-size: 44px;
+		line-height: 1.2;
+	}
+	h3 {
+		font-weight: 400;
+		font-size: 28px;
+		line-height: 1.2;
+	}
+	h4 {}
+}
+.acf-c-item {
+	width: 20px;
+	height: 20px;
+	vertical-align: top;
+	display: inline-block;
+}
+
+ 
+#adminmenu{
+	.menu-top{
+		.wp-menu-image{
+			img{
+				max-width: 20px;
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+}
+
+.post-type-solutions-cpt #the-list .type-solutions-cpt {
+	& > * {
+		border-top: 1px solid rgba(0,0,0,.05);
+	}
+	&.level-0 {
+		background-color: #C9DAF9;
+	}
+	&.level-1 {
+		background-color: #EAD1DC;
+	}
+	&.level-2 {
+		background-color: #B6D7A7;
+	}
+	&.level-3 {
+		background-color: #FCE5CD;
+	}
+}
+
+.block-editor-inner-blocks .acf-block-preview{
+	a{
+		pointer-events: none;	
+	}
+}

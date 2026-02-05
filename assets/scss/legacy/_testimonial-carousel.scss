@@ -1,0 +1,107 @@
+.section-testimonial-carousel{
+  padding: 70px 0px;
+  position: relative;
+  background-color: #F7F8FA;
+  @include mobile{
+    padding: 50px 0px;
+  }
+  &:before, &:after{
+    position: absolute;
+    content: '';
+    width: 32.5%;
+    pointer-events: none;
+    height: 100%;
+    top: 0;
+    z-index: 10;
+    background: transparent linear-gradient(90deg, #FFFFFF 0%, #FFFFFF00 100%) 0% 0% no-repeat padding-box;
+    @include mobile{
+      width: 20%;
+    }
+  }
+  &:before{
+    left: 0px;
+  }
+  &:after{
+    right: 0px;
+    transform: matrix(-1, 0, 0, -1, 0, 0);
+  }
+  .section-title{
+    margin-bottom: 40px;
+  }
+  .text-center{
+    text-align: center;
+  }
+}
+.gp_testemonial_carousel{
+   &-top{
+    margin-bottom: 60px;
+  }
+  .testimonial-item {
+    transition: all 0.3s ease-in-out;
+    direction: ltr;
+    padding: 20px 10px 20px 10px;
+  }
+  &.owl-drag{
+    .owl-item{
+      width: auto !important;
+      max-width: auto;
+    }
+  }
+  .owl-stage{
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+
+
+.gp_testemonial_carousel {
+  .active{
+    &.center{
+      .testimonial-item {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+  .testimonial-item_content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    @include mobile{
+      flex-direction: column;
+    }
+    .gp_image {
+      object-fit: contain;
+      display:inline-block;
+      min-width: 80px;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #fff;
+      @include mobile{
+        width: 66px;
+        height: 66px;
+        min-width: 66px;
+      }
+    }
+    .testimonial_content {
+      max-width: 425px;
+      min-width: 150px;
+      direction: ltr;
+      font-weight: 600;
+      font-style: italic;
+      color: #363636;
+      @include mobile{
+        font-size: 20px;
+        line-height: 24px;
+        max-width: 300px;
+      }
+    }
+  }
+}

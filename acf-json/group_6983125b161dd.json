@@ -1,0 +1,47 @@
+{
+    "key": "group_6983125b161dd",
+    "title": "[Legacy Toggle]",
+    "fields": [
+        {
+            "key": "field_6983125b998d3",
+            "label": "Toggle Legacy Styles\/Layout",
+            "name": "gp-cpt-is_legacy",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "(will load legacy layout & styles from old theme)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui_on_text": "TRUE",
+            "ui_off_text": "FALSE",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "case-study-cpt"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1770197756
+}

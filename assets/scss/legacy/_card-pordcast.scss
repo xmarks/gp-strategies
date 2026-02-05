@@ -1,0 +1,42 @@
+.pordcast-card-wrapper{
+	.data-content{
+		margin-top: 16px;
+	}
+	.pre-title{
+		font-style: normal;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 21px;
+		color: $c-aqua;
+	}
+	.title{
+		font-style: normal;
+		font-weight: 400;
+		font-size: 28px;
+		line-height: 34px;
+		color: $c-navy;
+		margin-top: 0px;
+		margin-bottom: 20px;
+	}
+	.anchor-element{
+		font-style: normal;
+		font-weight: 500;
+		font-size: 12px;
+		line-height: 18px;
+		// text-transform: uppercase;
+		color: $c-berry;
+		position: relative;
+		top: 0px;
+		left: 0px;
+		margin: 0px;
+		width: inherit;
+		height: inherit;
+		box-shadow: none;
+		&:hover{
+			transform: scale(1);
+		}
+		&:before{
+			content: none;
+		}
+	}
+}

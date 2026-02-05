@@ -1,0 +1,174 @@
+.table-of-contents{
+	&__list{
+		list-style: none;
+		padding: 0px;
+		margin: 0px;
+		> li{
+			position: relative;
+			padding: 16px 0px;
+			&:before{
+				content: '';
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				width: 100%;
+				height: 1px;
+				background: rgba(20, 38, 58, 0.2);
+				border-radius: 4px;
+
+			}
+			&:last-of-type:after{
+				content: '';
+				position: absolute;
+				left: 0px;
+				bottom: 0px;
+				width: 100%;
+				height: 1px;
+				background: rgba(20, 38, 58, 0.2);
+				border-radius: 4px;
+
+			}
+			.svg-icon-wrapper{
+				width: 44px;
+				height: 44px;
+				display: flex;
+				justify-content: center;
+    			align-items: center;
+				background: $c-aqua;
+				border-radius: 48px;
+				flex: 0 0 44px;
+				transition: all 400ms linear;
+				svg{
+
+					color: #fff;
+				}
+				
+			}
+			a{
+				display: flex;
+	    		align-items: center;
+	    		text-decoration: none;
+	    		column-gap: 12px;
+	    		font-family: $main-font;
+				font-style: normal;
+				font-weight: 500;
+				font-size: 16px;
+				line-height: 24px;
+				color: $c-navy;
+				transition: all 400ms linear;
+				&:hover, &:active, &.active{
+					color: $c-berry;
+					.svg-icon-wrapper{
+						background-color: $c-berry;
+					}
+				}
+			}
+			&.active {
+				& > a {
+					color: $c-berry;
+					.svg-icon-wrapper{
+						background-color: $c-berry;
+					}
+				}
+			}
+		}
+	}
+	.list_level_2,
+	&__sublist{
+		margin: 0px;
+		padding: 0px;
+		list-style: none;
+		margin-top: 11px;
+
+		li{
+			position: relative;
+			padding-left: 12px;
+			margin-bottom: 12px;
+			padding-top: 0;
+			padding-bottom: 0;
+			&:last-of-type{
+				margin-bottom: 0px;
+				&:after {
+					display: none;
+				}
+			}
+			&:before{
+				content: '';
+				position: absolute;
+				left: 0px;
+				top: 10px;
+				margin-top: -2px;
+				width: 4px;
+				height: 4px;
+				border-radius: 50%;
+				background-color:  $c-gray;
+			}
+			a{
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 21px;
+				color: $c-gray;
+				display: block;
+				padding: 0px;
+			}
+		}
+	}
+	.bottom-butoon{
+		margin-top: 32px;
+	}
+}
+
+// add sticky and fix sidebar size
+.wp-block-columns.sticky-sidebar {
+	display: grid;
+	grid-template-columns: 280px 1fr;
+	grid-gap: 80px;
+	.wp-block-column {
+		align-self: flex-start;
+		position: sticky;
+		top: 140px;
+		@include mobile {
+			position: relative;
+			top: auto;
+		}
+	}
+}
+.wp-block-jetpack-layout-grid {
+	.table-of-contents {
+		align-self: flex-start;
+		position: sticky;
+		top: 140px;
+		@include mobile {
+			position: relative;
+			top: auto;
+		}
+	}
+}
+
+.wp-block-emagine-grid__inner.sticky-sidebar {
+	display: grid;
+	grid-template-columns: 280px 1fr;
+	grid-gap: 80px;
+	@include desktop {
+		grid-gap: 40px;
+	}
+	@include tablet {
+		-ms-grid-columns:200px 1fr;
+		grid-template-columns:200px 1fr;
+	}
+	@include mobile {
+		-ms-grid-columns:1fr;
+		grid-template-columns:1fr;
+	}
+	.wp-block-emagine-column{
+		align-self: flex-start;
+		max-width: 100% !important;
+		padding: 0;
+		position: sticky;
+		top: 140px;
+		@include tablet {
+			position: relative;
+			top: auto;
+		}
+	}
+}

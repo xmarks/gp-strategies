@@ -1,0 +1,37 @@
+.icon-list{
+	display: flex;
+	flex-direction: column;
+	gap:12px;
+	&.horizontal{
+		display: flex;
+	    column-gap: 44px;
+	    flex-wrap: wrap;
+	    flex-direction: row;
+	    .icon-list__wrapper{
+	    	flex-direction: column;
+	    }
+	}
+	&__wrapper{
+		display: flex;
+	    text-align: center;
+	    align-items: center;
+	    gap: 12px;
+		.icon{
+			width: 44px;
+			height: 44px;
+			background-color: #1E8AA8;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+		}
+		.title{
+			font-style: normal;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 150%;
+			color: $c-navy;
+		}
+	}
+}

@@ -1,0 +1,43 @@
+.cards-grid{
+	--color:rgba(0, 84, 130, 0.06);
+	.cards-grid-row{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 12px;
+		@include tablet(){
+			grid-template-columns: 1fr;
+		}
+		@include mobile(){
+			grid-template-columns: 1fr 1fr;
+		}
+		@include mobile-sm(){
+			grid-template-columns: 1fr;
+		}
+		&__col{
+			display: flex;
+			flex-direction: row;
+			align-items: flex-start;
+			padding: 14px 12px;
+			gap: 10px;
+			border-radius: 4px;
+			background: var(--color);
+			.card-content{
+				color: $c-navy;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 150%;
+				&__title{
+					margin: 0px 0px 4px;
+					font-size: 14px;
+					font-weight: 700;
+				}
+				&__description{
+					margin: 0px;
+					font-size: 14px;
+					color: $c-navy;
+					font-weight: 400;
+				}
+			}
+		}
+	}
+}

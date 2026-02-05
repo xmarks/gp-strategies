@@ -1,0 +1,49 @@
+.cta-section-banner{
+    padding: 90px 0px;
+    position: relative;
+    &__wrap{
+        padding: 50px 70px;
+        color: #fff;
+        background-color: rgba(0,0,0,.75);
+        max-width: 750px;
+        width: 100%;
+        @include desktop{
+            padding: 55px 50px;
+            max-width: 730px;
+        }
+        @include mobile{
+            padding: 35px 25px;
+            max-width: 570px;
+        }
+        @include mobile-sm{
+            padding: 35px 20px;
+            max-width: 375px;
+        }
+    }
+    &__title{
+        font-size: 43px;
+        color: #fff;
+        font-weight: 800;
+        margin-bottom: 55px;
+        @include tablet{
+            font-size: 38px;
+        }
+        @include mobile{
+            font-size: 32px;
+        }
+        @include mobile-sm{
+            margin-bottom: 35px;
+            font-size: 22px;
+        }
+    }
+    &__description{
+        font-size: 23px;
+        font-weight: 600;
+        @include tablet{
+            font-size: 20px;
+        }
+        @include mobile-sm{
+            font-size: 16px;
+        }
+    }
+}

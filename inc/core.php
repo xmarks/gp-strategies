@@ -126,3 +126,36 @@ function gp_add_legacy_block_category( array $categories ): array {
 	return $categories;
 }
 add_filter( 'block_categories_all', 'gp_add_legacy_block_category', 11, 1 );
+
+
+/**
+ * Override ACF options pages registration.
+ * Adds Global Blocks sub-page for legacy field groups.
+ *
+ * @return void
+ */
+function my_acf_op_init(): void {
+	if ( ! function_exists( 'acf_add_options_page' ) ) {
+		return;
+	}
+
+	$parent = acf_add_options_page(
+		array(
+			'page_title' => __( '[Legacy] - Theme General Settings' ),
+			'menu_title' => __( 'Theme Settings' ),
+			'post_id'    => 'options',
+			'redirect'   => false,
+		)
+	);
+
+	// Add Global Blocks subpage (required for legacy field groups).
+	acf_add_options_page(
+		array(
+			'page_title'  => __( '[Legacy] - Global Blocks' ),
+			'menu_title'  => __( 'Global Blocks' ),
+			'parent_slug' => $parent['menu_slug'],
+			'post_id'     => 'global',
+		)
+	);
+}
+add_action( 'acf/init', 'my_acf_op_init' );

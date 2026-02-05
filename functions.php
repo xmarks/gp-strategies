@@ -18,7 +18,7 @@ if ( file_exists( get_template_directory() . '/vendor/autoload.php' ) ) {
 
 // Define theme version.
 if ( ! defined( 'GP_STRATEGIES_VERSION' ) ) {
-	define( 'GP_STRATEGIES_VERSION', '1.0.4' );
+	define( 'GP_STRATEGIES_VERSION', '1.0.5' );
 }
 
 // Define theme path constant.
@@ -53,3 +53,6 @@ require_once ST_THEME_PATH . '/inc/widgets.php';
 
 // Load Elementor custom widgets.
 require_once ST_THEME_PATH . '/inc/elementor-widgets.php';
+
+// Legacy Support.
+require_once ST_THEME_PATH . '/inc/legacy.php';
