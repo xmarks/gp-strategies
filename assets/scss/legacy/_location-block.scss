@@ -1,0 +1,46 @@
+.location-block {
+	position: relative;
+	display:grid;
+	grid-template-columns:640fr 580fr;
+	grid-gap: 60px;
+	padding: 0 0 16px;
+	margin: 16px 0 16px;
+	border-bottom: 1px solid rgba(20, 38, 58, 0.2);
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+	& &__title {
+		color: $c-berry;
+		margin: 0;
+	}
+
+	&__text {
+		font-weight: 300;
+		font-size: 14px;
+		line-height: 150%;
+		p {
+			margin: 4px 0;
+		}
+		ul {
+			margin-top: 4px;
+			margin-bottom: 4px;
+		}
+	}
+	&__text-title {
+		color: $c-navy;
+		font-size: 16px;
+		margin: 0 0 4px;
+		font-weight: 400;
+	}
+
+	&__map {
+		height: 248px;
+		.acf-map {
+			height: 100%;
+		}
+	}
+
+}

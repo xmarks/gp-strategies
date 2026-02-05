@@ -102,3 +102,60 @@ if ( ! function_exists( 'gp_strategies_content_width' ) ) {
 	}
 }
 add_action( 'after_setup_theme', 'gp_strategies_content_width', 0 );
+
+
+/**
+ * Add legacy block category for imported blocks from gpstrategies-2023 theme.
+ *
+ * This supplements the parent theme's st_add_theme_block_categories() function,
+ * keeping the existing 'gp-strategies' category while adding a new 'gpstrategies' legacy category.
+ *
+ * @param array $categories Current list of categories.
+ *
+ * @return array
+ * @since 1.0.0
+ */
+function gp_add_legacy_block_category( array $categories ): array {
+	$legacy_category = array(
+		'slug'  => 'gpstrategies',
+		'title' => __( '[Legacy] - GP Strategies Sections', 'gp-strategies' ),
+		'icon'  => 'admin-appearance',
+	);
+	array_unshift( $categories, $legacy_category );
+
+	return $categories;
+}
+add_filter( 'block_categories_all', 'gp_add_legacy_block_category', 11, 1 );
+
+
+/**
+ * Override ACF options pages registration.
+ * Adds Global Blocks sub-page for legacy field groups.
+ *
+ * @return void
+ */
+function my_acf_op_init(): void {
+	if ( ! function_exists( 'acf_add_options_page' ) ) {
+		return;
+	}
+
+	$parent = acf_add_options_page(
+		array(
+			'page_title' => __( '[Legacy] - Theme General Settings' ),
+			'menu_title' => __( 'Theme Settings' ),
+			'post_id'    => 'options',
+			'redirect'   => false,
+		)
+	);
+
+	// Add Global Blocks subpage (required for legacy field groups).
+	acf_add_options_page(
+		array(
+			'page_title'  => __( '[Legacy] - Global Blocks' ),
+			'menu_title'  => __( 'Global Blocks' ),
+			'parent_slug' => $parent['menu_slug'],
+			'post_id'     => 'global',
+		)
+	);
+}
+add_action( 'acf/init', 'my_acf_op_init' );

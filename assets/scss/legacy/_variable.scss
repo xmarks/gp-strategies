@@ -1,0 +1,76 @@
+@mixin desktop-lg {
+	@media only screen and (max-width: 1320px) {
+		@content;
+	}
+}
+@mixin mf-desktop-lg {
+	@media only screen and (min-width: 1360px) {
+		@content;
+	}
+}
+@mixin mf-desktop {
+	@media only screen and (min-width: 1200px) {
+		@content;
+	}
+}
+@mixin mf-small-desktop {
+	@media only screen and (min-width: 992px) {
+		@content;
+	}
+}
+@mixin mf-tablet {
+	@media only screen and (min-width: 768px) {
+		@content;
+	}
+}
+@mixin small-desktop {
+	@media only screen and (min-width: 1100px) and (max-height: 700px) {
+		@content;
+	}
+}
+@mixin desktop {
+	@media only screen and (max-width: 1199px) {
+		@content;
+	}
+}
+// @mixin desktop {
+// 	@media only screen and (max-width: 1199px) {
+// 		@content;
+// 	}
+// }
+@mixin tablet {
+	@media only screen and (max-width: 991px) {
+		@content;
+	}
+}
+@mixin mobile {
+	@media only screen and (max-width: 767px) {
+		@content;
+	}
+}
+@mixin mobile-sm {
+	@media only screen and (max-width: 575px) {
+		@content;
+	}
+}
+
+$c-berry: #C11F5A;
+$c-berry-h: #B12452cc;
+
+$c-navy: #0C304F;
+$c-navy-h: #14263Acc;
+
+$c-aqua: #1E8AA8;
+$c-aqua-h: #218098cc;
+
+$c-blue: #005482;
+
+$c-gray: #5A5858;
+
+$c-mint: #13A59A;
+
+$c-orange: #DE5126;
+
+
+$main-font: hero-new,Helvetica,Arial,sans-serif;
+$heading-font: Montserrat,Helvetica,Arial,sans-serif;

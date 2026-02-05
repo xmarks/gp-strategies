@@ -1,0 +1,61 @@
+.search-hero{
+	background-color: $c-navy;
+	color: #fff;
+	&:before{
+		content: '';
+	    position: absolute;
+	    top: 0;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    background-repeat: no-repeat;
+	    background-position: 100% 50%;
+	    z-index: 2;
+	    background-image: url('../images/LOGO-PATTERN.svg');
+	}
+}
+.search-content{
+	.result-count{
+		font-style: normal;
+		font-weight: 300;
+		font-size: 14px;
+		line-height: 21px;
+		text-align: right;
+		color: #5A5858;	
+		span{
+			color: $c-berry;
+		}
+	}
+}
+.search-section__content{
+	width: 100%;
+	article{
+		padding-bottom: 32px;
+		border-bottom: 1px solid rgba(20, 38, 58, 0.2);
+		margin-bottom: 32px;
+		.entry-header{
+			.entry-meta{
+				font-style: normal;
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 21px;
+				color: $c-aqua;
+			}
+			.entry-title {
+				font-style: normal;
+				font-weight: 400;
+				font-size: 28px;
+				line-height: 34px;
+				margin-bottom: 16px;
+				margin-top: 12px;
+				a{
+					color: $c-navy;
+					text-decoration: none;
+				}
+			}
+		}
+		.entry-summary > *{
+			margin-bottom: 0px;
+		}
+	}
+}

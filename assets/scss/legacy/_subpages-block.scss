@@ -1,0 +1,102 @@
+.subpages-block {
+	&--images {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin: 0 -16px 0;
+		@include tablet {
+			display:grid;
+			margin: 0;
+			grid-gap: 20px;
+			grid-template-columns:repeat(3, 1fr);
+		}
+		@include mobile {
+			grid-template-columns:repeat(2, 1fr);
+		}
+		@include mobile-sm {
+			grid-template-columns:repeat(1, 1fr);
+		}
+	}
+	&--simple {
+		display:-ms-grid;
+		display:grid;
+		-ms-grid-columns:repeat(var(--columns-num), 1fr);
+		grid-template-columns:repeat(var(--columns-num), 1fr);
+		grid-gap: 24px;
+		@include tablet {
+			grid-template-columns:repeat(2, 1fr);
+		}
+		@include mobile {
+			grid-template-columns:repeat(1, 1fr);
+		}
+	}
+	&__wrap {
+		padding: 0 16px;
+		margin: 0 0 60px;
+		box-sizing: border-box;
+		max-width: var(--columns);
+		flex: 0 0 var(--columns);
+		@include tablet {
+			max-width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+	}
+	&__item {
+		text-decoration: none;
+		color: $c-navy;
+		display: block;
+		&--simple {
+			text-align: left;
+			position: relative;
+			padding-left: 52px;
+			display: inline-block;
+			&:before {
+				content: '';
+				position: absolute;
+				width: 40px;
+				height: 12px;
+				top: 50%;
+				margin-top: -6px;
+				left: 0;
+				background-repeat: no-repeat;
+				background-image: url("data:image/svg+xml,%3Csvg width='40' height='12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M31.994 2a4 4 0 1 0 0 8 4.001 4.001 0 0 0 4.005-4c0-2.21-1.793-4-4.005-4Z' fill='%23C01F5A'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M19.747 2.75A3.252 3.252 0 0 0 16.492 6a3.253 3.253 0 0 0 3.255 3.25A3.253 3.253 0 0 0 23 6a3.251 3.251 0 0 0-3.254-3.25Z' fill='%23DD5126'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.504 3.5a2.5 2.5 0 1 0 0 5A2.501 2.501 0 0 0 10.007 6c0-1.38-1.12-2.5-2.503-2.501Z' fill='%23F28420'/%3E%3C/svg%3E");
+			}
+			&:hover {
+				.subpages-block__title {
+					color: $c-berry;
+				}
+			}
+		}
+	}
+	&__visual {
+		border: 1px solid rgba(20, 38, 58, 0.2);
+		border-radius: 24px;
+		height: 186px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0 0 16px;
+		img {
+			width: auto;
+			height: auto;
+			max-width: 90%;
+			max-height: 90%;
+			object-fit: contain;
+		}
+	}
+	&__name {
+		text-align: center;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 150%;
+	}
+	&__title {
+		h3 & {
+
+			margin: 0;
+			color: $c-navy;
+			transition: all 0.2s ease 0s;
+		}
+	}
+}

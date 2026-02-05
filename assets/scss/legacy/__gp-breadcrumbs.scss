@@ -1,0 +1,17 @@
+ul.gp-breadcrumbs{
+	margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: flex;
+    column-gap: 7px;
+    row-gap: 12px;
+    flex-wrap: wrap;
+    font-weight: 400;
+	font-size: 12px;
+	line-height: 18px;
+    color: #fff;
+    li:before{
+        content: none;
+    }
+    
+}

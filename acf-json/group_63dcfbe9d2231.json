@@ -1,0 +1,199 @@
+{
+    "key": "group_63dcfbe9d2231",
+    "title": "Icon List",
+    "fields": [
+        {
+            "key": "field_63dd00992d03e",
+            "label": "List Style",
+            "name": "list_style",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "horizontal": "Horizontal",
+                "vertical": "Vertical"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "layout": "horizontal",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_63dd00722d03c",
+            "label": "Add List Item",
+            "name": "add_list_item",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_63dcfbea2d03b",
+                    "label": "Choose SVG",
+                    "name": "choose_svg",
+                    "aria-label": "",
+                    "type": "svg_icon",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": [],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "choices": {
+                        "icon-chat": {
+                            "ID": "icon-chat"
+                        },
+                        "icon-lamp": {
+                            "ID": "icon-lamp"
+                        },
+                        "icon-managed": {
+                            "ID": "icon-managed"
+                        },
+                        "icon-lead": {
+                            "ID": "icon-lead"
+                        },
+                        "icon-implementation": {
+                            "ID": "icon-implementation"
+                        },
+                        "icon-sales-solution": {
+                            "ID": "icon-sales-solution"
+                        },
+                        "icon-tech-solution": {
+                            "ID": "icon-tech-solution"
+                        },
+                        "icon-technical": {
+                            "ID": "icon-technical"
+                        },
+                        "icon-search": {
+                            "ID": "icon-search"
+                        },
+                        "icon-globe": {
+                            "ID": "icon-globe"
+                        },
+                        "icon-study": {
+                            "ID": "icon-study"
+                        },
+                        "icon-download": {
+                            "ID": "icon-download"
+                        },
+                        "icon-loading": {
+                            "ID": "icon-loading"
+                        },
+                        "icon-full-logo": {
+                            "ID": "icon-full-logo"
+                        },
+                        "icon-instagram": {
+                            "ID": "icon-instagram"
+                        },
+                        "icon-facebook": {
+                            "ID": "icon-facebook"
+                        },
+                        "icon-twitter": {
+                            "ID": "icon-twitter"
+                        },
+                        "icon-youtube": {
+                            "ID": "icon-youtube"
+                        },
+                        "icon-linkedin": {
+                            "ID": "icon-linkedin"
+                        },
+                        "icon-video": {
+                            "ID": "icon-video"
+                        },
+                        "icon-design": {
+                            "ID": "icon-design"
+                        },
+                        "icon-study-doc": {
+                            "ID": "icon-study-doc"
+                        },
+                        "icon-gp-dots-logo": {
+                            "ID": "icon-gp-dots-logo"
+                        },
+                        "icon-gp-dots-arrow": {
+                            "ID": "icon-gp-dots-arrow"
+                        },
+                        "icon-user-profile": {
+                            "ID": "icon-user-profile"
+                        }
+                    },
+                    "ui": 1,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "return_format": "value",
+                    "file": {
+                        "path": "C:\\Users\\User\\Local Sites\\gpstrategies\\app\\public\/wp-content\/themes\/gpstrategies-2023\/images\/icons.svg",
+                        "url": "http:\/\/gpstrategies.local\/wp-content\/themes\/gpstrategies-2023\/images\/icons.svg"
+                    },
+                    "parent_repeater": "field_63dd00722d03c"
+                },
+                {
+                    "key": "field_63dd00882d03d",
+                    "label": "Text",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_63dd00722d03c"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "gp\/icon-list"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1675428335
+}

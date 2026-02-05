@@ -1,0 +1,35 @@
+.gp-text-format{
+	position: relative;
+	padding-left: 16px;
+	margin-bottom: 24px;
+	> :first-child{
+		margin-top: 0px;
+	}
+	> :last-child{
+		margin-bottom: 0px;
+	}
+	&:before{
+		content: '';
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		width: 4px;
+		height: 100%;
+		border-radius: 4px;
+		background: $c-aqua;
+	}
+	
+	ul{
+		padding-left: 0;
+	    margin: 14px 0 16px 22px;
+	    font-weight: 300;
+	    font-size: 14px;
+	    line-height: 150%;
+	}
+	&.disable-left-border{
+		padding-left: 0px;
+		&:before{
+			content: none;
+		}
+	}
+}
