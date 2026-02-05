@@ -459,5 +459,5 @@ function legacy_sprite_svg( $spriteName, $svgWidth = '24', $svgHeight = '24' ) {
 // Plugin ACF Svg icon field
 add_filter( 'acf/fields/svg_icon/file_path', 'tc_acf_svg_icon_file_path' );
 function tc_acf_svg_icon_file_path( $file_path ) {
-    return get_theme_file_path( '/images/icons2.svg' );
+    return get_theme_file_path( '/assets/images/legacy/icons2.svg' );
 }
