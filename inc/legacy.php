@@ -441,3 +441,23 @@ function gp_breadcrumbs()
         echo '</ul>';
     }
 }
+
+function legacy_sprite_svg( $spriteName, $svgWidth = '24', $svgHeight = '24' ) {
+    $svg      = get_stylesheet_directory_uri() . '/assets/images/legacy/icons2.svg#' . $spriteName;
+    $elWidth  = '';
+    $elHeight = '';
+    if ( isset( $svgWidth ) ) {
+        $elWidth = 'width="' . $svgWidth . '"';
+    }
+    if ( isset( $svgHeight ) ) {
+        $elHeight = 'height="' . $svgHeight . '"';
+    }
+
+    echo '<svg crossorigin="" class="svg-icon" '.$elWidth.' '.$elHeight.'><use xlink:href="' . $svg . '"></use></svg>'; // phpcs:ignore
+}
+
+// Plugin ACF Svg icon field
+add_filter( 'acf/fields/svg_icon/file_path', 'tc_acf_svg_icon_file_path' );
+function tc_acf_svg_icon_file_path( $file_path ) {
+    return get_theme_file_path( '/images/icons2.svg' );
+}

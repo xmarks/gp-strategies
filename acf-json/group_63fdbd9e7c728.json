@@ -1,84 +1,79 @@
 {
-    "key": "group_63da4ea416cd7",
-    "title": "[Legacy] - Single Post - List of Content",
+    "key": "group_63fdbd9e7c728",
+    "title": "[Legacy] - Block: Info Grid with Icons",
     "fields": [
         {
-            "key": "field_63da4ea4401d9",
-            "label": "Company logo",
-            "name": "company_logo",
+            "key": "field_63fdbd9f733db",
+            "label": "Columns",
+            "name": "columns",
             "aria-label": "",
-            "type": "image",
+            "type": "number",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "30",
+                "width": "",
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
+            "default_value": 2,
+            "min": 1,
+            "max": 4,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
         },
         {
-            "key": "field_64068ce49fb36",
-            "label": "Image Style",
-            "name": "image_style",
+            "key": "field_63fdbdcd733dc",
+            "label": "Grid Gap vertical",
+            "name": "grid_gap_vertical",
             "aria-label": "",
-            "type": "button_group",
+            "type": "number",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "25",
+                "width": "",
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "contain": "Contain",
-                "cover": "Cover"
-            },
-            "default_value": "",
-            "return_format": "value",
-            "allow_null": 0,
-            "layout": "horizontal"
+            "default_value": 16,
+            "min": 0,
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "px"
         },
         {
-            "key": "field_64068e641da4e",
-            "label": "Border Radius",
-            "name": "border_radius",
+            "key": "field_63fdbe15733dd",
+            "label": "Grid Gap horizontal",
+            "name": "grid_gap_horizontal",
             "aria-label": "",
-            "type": "button_group",
+            "type": "number",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "25",
+                "width": "",
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "yes": "Yes",
-                "no": "No"
-            },
-            "default_value": "",
-            "return_format": "value",
-            "allow_null": 0,
-            "layout": "horizontal"
+            "default_value": 40,
+            "min": 0,
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "px"
         },
         {
-            "key": "field_63da51662cf2e",
-            "label": "Show list of content",
-            "name": "show_list_of_content",
+            "key": "field_63fdbe6e733df",
+            "label": "Icon Position",
+            "name": "icon_position",
             "aria-label": "",
-            "type": "button_group",
+            "type": "radio",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -88,31 +83,25 @@
                 "id": ""
             },
             "choices": {
-                "yes": "yes",
-                "no": "no"
+                "left": "left",
+                "top": "top"
             },
-            "default_value": "yes",
+            "default_value": "left",
             "return_format": "value",
             "allow_null": 0,
-            "layout": "horizontal"
+            "other_choice": 0,
+            "layout": "vertical",
+            "save_other_choice": 0
         },
         {
-            "key": "field_63da518d2cf2f",
-            "label": "Link Items",
-            "name": "link_items",
+            "key": "field_63fdbe86733e0",
+            "label": "Items",
+            "name": "items",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_63da51662cf2e",
-                        "operator": "==",
-                        "value": "yes"
-                    }
-                ]
-            ],
+            "required": 1,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -123,25 +112,27 @@
             "min": 0,
             "max": 0,
             "collapsed": "",
-            "button_label": "Add Row",
+            "button_label": "Add Item",
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_63da5219a9820",
-                    "label": "Choose Icon",
-                    "name": "choose_icon",
+                    "key": "field_63fdbea9733e1",
+                    "label": "Icon",
+                    "name": "icon",
                     "aria-label": "",
                     "type": "svg_icon",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "20",
                         "class": "",
                         "id": ""
                     },
-                    "default_value": [],
-                    "allow_null": 1,
+                    "default_value": [
+                        "icon-lamp"
+                    ],
+                    "allow_null": 0,
                     "multiple": 0,
                     "choices": {
                         "icon-chat": {
@@ -225,17 +216,17 @@
                     "placeholder": "",
                     "return_format": "value",
                     "file": {
-                        "path": "C:\\Users\\User\\Local Sites\\gpstrategies\\app\\public\/wp-content\/themes\/gpstrategies-2023\/images\/icons.svg",
-                        "url": "http:\/\/gpstrategies.local\/wp-content\/themes\/gpstrategies-2023\/images\/icons.svg"
+                        "path": "\/Users\/shoot56\/Local Sites\/gp-new\/app\/public\/wp-content\/themes\/gpstrategies-2023\/images\/icons.svg",
+                        "url": "http:\/\/gp-new.local\/wp-content\/themes\/gpstrategies-2023\/images\/icons.svg"
                     },
-                    "parent_repeater": "field_63da518d2cf2f"
+                    "parent_repeater": "field_63fdbe86733e0"
                 },
                 {
-                    "key": "field_63da524013b70",
-                    "label": "Link",
-                    "name": "link",
+                    "key": "field_63fdbec4733e2",
+                    "label": "Text content",
+                    "name": "text_content",
                     "aria-label": "",
-                    "type": "link",
+                    "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -244,50 +235,12 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
-                    "parent_repeater": "field_63da518d2cf2f"
-                },
-                {
-                    "key": "field_63da525213b71",
-                    "label": "Sub Items",
-                    "name": "sub_items",
-                    "aria-label": "",
-                    "type": "repeater",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "layout": "table",
-                    "pagination": 0,
-                    "min": 0,
-                    "max": 0,
-                    "collapsed": "",
-                    "button_label": "Add Row",
-                    "rows_per_page": 20,
-                    "parent_repeater": "field_63da518d2cf2f",
-                    "sub_fields": [
-                        {
-                            "key": "field_63da526113b72",
-                            "label": "Link",
-                            "name": "link",
-                            "aria-label": "",
-                            "type": "link",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "array",
-                            "parent_repeater": "field_63da525213b71"
-                        }
-                    ]
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "parent_repeater": "field_63fdbe86733e0"
                 }
             ]
         }
@@ -295,16 +248,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "block",
                 "operator": "==",
-                "value": "case-study-cpt"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
+                "value": "gp\/info-block-grid"
             }
         ]
     ],
@@ -317,5 +263,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678151392
+    "modified": 1677574125
 }
