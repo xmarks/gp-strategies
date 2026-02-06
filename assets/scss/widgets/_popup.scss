@@ -1,0 +1,14 @@
+.gp-popup {
+
+  &--video {
+
+	.dialog-widget-content {
+
+	  .dialog-message {
+		width        : 100%;
+		height       : 92.5vh;
+		aspect-ratio : 16/9;
+	  }
+	}
+  }
+}

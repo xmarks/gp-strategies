@@ -59,58 +59,43 @@
 }());
 
 
+/**
+ * Play Button - Hover Text Swap
+ *
+ * Swaps .elementor-button-text content with the data-hover-text
+ * attribute value on hover/focus, reverts on leave.
+ */
 (function () {
-    function scopeToElement( scope ) {
-        // Works if Elementor passes a jQuery object or a plain Element
-        return scope && scope.nodeType === 1 ? scope : (scope && scope[0] ? scope[0] : null);
+    const playButtons = document.querySelectorAll( '.gp-btn--play[data-hover-text]' );
+
+    if ( ! playButtons.length ) {
+        return;
     }
 
-    function makeVertical( scope ) {
-        const root = scopeToElement( scope );
-        if (!root) return;
+    playButtons.forEach( ( widget ) => {
+        const hoverText = widget.getAttribute( 'data-hover-text' );
+        const textEl    = widget.querySelector( '.elementor-button-text' );
 
-        // Only target the carousel you tagged
-        if (!root.classList.contains( 'vertical-carousel' )) return;
+        if ( ! textEl || ! hoverText ) {
+            return;
+        }
 
-        const swiperEl = root.querySelector( '.e-n-carousel.swiper' );
-        if (!swiperEl) return;
+        const originalText = textEl.textContent;
+        const anchor       = widget.querySelector( '.elementor-button' );
 
-        const tryInit = () => {
-            const swiper = swiperEl.swiper;
-            if (!swiper) return false;
+        function swapIn() {
+            textEl.textContent = hoverText;
+        }
 
-            // Direction -> vertical
-            if (typeof swiper.changeDirection === 'function') {
-                swiper.changeDirection( 'vertical', false );
-            } else {
-                swiper.params.direction = 'vertical';
-            }
+        function swapOut() {
+            textEl.textContent = originalText;
+        }
 
-            // Optional: normalize spacing via Swiper instead of margin-right
-            if (swiper.params && (swiper.params.spaceBetween == null)) {
-                swiper.params.spaceBetween = 10;
-            }
-
-            swiper.update();
-            return true;
-        };
-
-        if (tryInit()) return;
-
-        // Poll until Elementor attaches swiperEl.swiper
-        let n = 0;
-        const t = setInterval( () => {
-            n++;
-            if (tryInit() || n > 60) clearInterval( t ); // ~3s
-        }, 50 );
-    }
-
-    document.addEventListener( 'elementor/frontend/init', function () {
-        if (!window.elementorFrontend || !elementorFrontend.hooks) return;
-
-        elementorFrontend.hooks.addAction(
-            'frontend/element_ready/nested-carousel.default',
-            makeVertical
-        );
+        if ( anchor ) {
+            anchor.addEventListener( 'mouseenter', swapIn );
+            anchor.addEventListener( 'mouseleave', swapOut );
+            anchor.addEventListener( 'focus', swapIn );
+            anchor.addEventListener( 'blur', swapOut );
+        }
     } );
-})();
+}());
