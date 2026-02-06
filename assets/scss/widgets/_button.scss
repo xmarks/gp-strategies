@@ -144,25 +144,33 @@ body {
 
 	  // Play
 	  &--play {
+		--gp-btn-py             : 10.5px;
+		--gp-btn-px             : 12px;
+		--gp-btn-text-offset    : 7px;
+		--gp-btn-play-icon-bg-w : 24px;
+
+		display                 : flex;
+		align-items             : center;
 
 		.elementor-button {
-		  --gp-btn-py             : 10.5px;
-		  --gp-btn-px             : 12px;
-		  --gp-btn-text-offset    : 8px;
-		  --gp-btn-play-icon-bg-w : 24px;
+		  width               : 164px;
+		  height              : 45px;
 
-		  position                : relative;
+		  position            : relative;
+		  display             : flex;
+		  align-items         : center;
 
 		  // Animated gradient using @property custom properties
-		  background              : radial-gradient(var(--play-sw) var(--play-sh) at var(--play-px) var(--play-py), var(--play-c1) 0%, var(--play-c2) 100%);
-		  animation               : play-pulse 5s ease infinite;
-		  will-change             : background;
-		  backface-visibility     : hidden;
-		  isolation               : isolate; // prevent sub-pixel bleed between animated bg and icon in Firefox
-		  transition              : padding .3s ease, font-size .3s ease, background .3s ease;
+		  background          : radial-gradient(var(--play-sw) var(--play-sh) at var(--play-px) var(--play-py), var(--play-c1) 0%, var(--play-c2) 100%);
+		  animation           : play-pulse 5s ease infinite;
+		  will-change         : background;
+		  backface-visibility : hidden;
+		  isolation           : isolate; // prevent sub-pixel bleed between animated bg and icon in Firefox
+		  transition          : padding .3s ease, font-size .3s ease, background .3s ease;
 
 		  &-content-wrapper {
-			transition : gap .3s ease;
+			gap             : 0 !important; // will allow breathing space to play with text-change on hover
+			justify-content : space-between;
 		  }
 
 		  &-text {
@@ -170,6 +178,10 @@ body {
 		  }
 
 		  &-icon {
+			position      : absolute;
+			top           : var(--gp-btn-py);
+			right         : var(--gp-btn-px);
+
 			width         : var(--gp-btn-play-icon-bg-w);
 			height        : var(--gp-btn-play-icon-bg-w);
 			display       : grid;
@@ -179,26 +191,29 @@ body {
 			border-radius : 100%;
 			transition    : width .3s ease, height .3s ease;
 
+
 			svg {
 			  fill                : currentColor;
 			  stroke              : currentColor;
 
 			  aspect-ratio        : 8 / 8; // size of svg
 			  width               : 11.2px;
+			  margin-left         : 2px; // better positioning
+
 			  display             : block;
 			  animation           : play-pulse-svg 5s ease infinite;
 			  transform-origin    : center center;
 			  transform           : scale(1);
 			  will-change         : transform;
 			  backface-visibility : hidden;
-			  transition          : transform .3s ease;
+			  transition          : transform .3s ease, margin-left ease .3s;
 			}
 		  }
 
 		  &:hover,
 		  &:focus {
 			--gp-btn-py             : 7px;
-			--gp-btn-text-offset    : 15px;
+			--gp-btn-text-offset    : 14px;
 			--gp-btn-play-icon-bg-w : 31px;
 
 			font-size               : 16px;
@@ -210,12 +225,13 @@ body {
 			}
 
 			.elementor-button-content-wrapper {
-			  gap : 12px; // design choices
+
 			}
 
 			.elementor-button-icon svg {
-			  animation  : none;
-			  transform  : scale(1.35);
+			  animation   : none;
+			  margin-left : 3px;
+			  transform   : scale(1.35);
 			}
 		  }
 
