@@ -1,3 +1,81 @@
+// @property registrations for smooth gradient animation (CSS Houdini)
+@property --play-sw {
+  syntax        : '<percentage>';
+  inherits      : false;
+  initial-value : 267.08%;
+}
+
+@property --play-sh {
+  syntax        : '<percentage>';
+  inherits      : false;
+  initial-value : 267.74%;
+}
+
+@property --play-px {
+  syntax        : '<percentage>';
+  inherits      : false;
+  initial-value : 28.05%;
+}
+
+@property --play-py {
+  syntax        : '<percentage>';
+  inherits      : false;
+  initial-value : 51.11%;
+}
+
+@property --play-c1 {
+  syntax        : '<color>';
+  inherits      : false;
+  initial-value : #1D857D;
+}
+
+@property --play-c2 {
+  syntax        : '<color>';
+  inherits      : false;
+  initial-value : #050E24;
+}
+
+// Play button background gradient animation
+@keyframes play-pulse {
+  0%, 100% {
+	--play-sw : 267.08%;
+	--play-sh : 267.74%;
+	--play-px : 28.05%;
+	--play-py : 51.11%;
+	--play-c1 : #1D857D;
+	--play-c2 : #050E24;
+  }
+  33.33% {
+	--play-sw : 393.88%;
+	--play-sh : 602.08%;
+	--play-px : -155.49%;
+	--play-py : 187.78%;
+	--play-c1 : #1D857D;
+	--play-c2 : #C11F5A;
+  }
+  66.67% {
+	--play-sw : 143.57%;
+	--play-sh : 283.85%;
+	--play-px : 25.3%;
+	--play-py : 222.22%;
+	--play-c1 : #13A59A;
+	--play-c2 : #008CAB;
+  }
+}
+
+// Play button SVG scale animation
+@keyframes play-pulse-svg {
+  0%, 100% {
+	transform : scale(1,); // 11.2px
+  }
+  33.33% {
+	transform : scale(1.2); // ~15px
+  }
+  66.67% {
+	transform : scale(0.804); // ~9px
+  }
+}
+
 body {
 
   .elementor-widget-button {
@@ -29,7 +107,7 @@ body {
 		background-color : var(--gp-btn-bg);
 
 		&-content-wrapper {
-
+		  align-items : center;
 		}
 
 		&-text {
@@ -136,6 +214,92 @@ body {
 			.elementor-button-text,
 			.elementor-button-icon {
 			  opacity : 0.5;
+			}
+		  }
+		}
+	  }
+
+	  // Play
+	  &--play {
+
+		.elementor-button {
+		  --gp-btn-py         : 10.5px;
+		  --gp-btn-px         : 12px;
+
+		  position            : relative;
+
+		  border-radius       : var(--gp-btn-br);
+		  padding             : var(--gp-btn-py) var(--gp-btn-px) var(--gp-btn-py) calc(var(--gp-btn-px) + 8px); // +8px left
+
+		  color               : var(--gp-btn-c);
+
+		  // Animated gradient using @property custom properties
+		  background          : radial-gradient(var(--play-sw) var(--play-sh) at var(--play-px) var(--play-py), var(--play-c1) 0%, var(--play-c2) 100%);
+		  animation           : play-pulse 5s ease infinite;
+		  will-change         : background;
+		  backface-visibility : hidden;
+		  isolation           : isolate; // prevent sub-pixel bleed between animated bg and icon in Firefox
+
+		  &-content-wrapper {
+
+		  }
+
+		  &-text {
+
+		  }
+
+		  &-icon {
+			width         : 24px;
+			height        : 24px;
+			display       : grid;
+			place-items   : center;
+
+			background    : rgba(217, 217, 217, 0.61);
+			border-radius : 100%;
+
+			svg {
+			  fill                : currentColor;
+			  stroke              : currentColor;
+
+			  aspect-ratio        : 8 / 8; // size of svg
+			  width               : 11.2px;
+			  display             : block;
+			  animation           : play-pulse-svg 5s ease infinite;
+			  transform-origin    : center center;
+			  transform           : scale(1);
+			  will-change         : transform;
+			  backface-visibility : hidden;
+			}
+		  }
+
+		  &:hover,
+		  &:focus {
+			//color      : var(--gp-btn-c--hover);
+			//background : var(--gp-btn-bg--hover);
+			//animation  : none;
+
+			&:before {
+			  display : none;
+			}
+
+			.elementor-button-icon svg {
+			  //animation  : none;
+			  //transform  : scale(1);
+			}
+		  }
+
+		  &:active {
+			//color      : var(--gp-btn-c--active);
+			//background : var(--gp-btn-bg--active);
+			//animation  : none;
+
+			&:before {
+			  display : none;
+			}
+
+			.elementor-button-icon svg {
+			  //animation  : none;
+			  //transform  : scale(1);
 			}
 		  }
 		}
